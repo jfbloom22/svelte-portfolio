@@ -14,15 +14,14 @@
 	}>();
 </script>
 
-<section class="hero-section jf-section breakout hero">
-	<h1 class="hero-heading">
-		{primaryName}
-		<br />
-		{secondaryName}
-	</h1>
+<section class="hero-section">
+	<div class="hero-name-stack">
+		<span class="hero-name hero-name--primary">{primaryName}</span>
+		<span class="hero-name hero-name--secondary">{secondaryName}</span>
+	</div>
 	<div class="hero-lines">
 		{#each lines as line (line.text)}
-			<h2 class={`hero-title ${line.align === 'left' ? 'left' : ''}`} style={`animation-delay:${line.delay}s`}>
+			<h2 class={`hero-line hero-line--${line.align}`} style={`animation-delay:${line.delay}s`}>
 				{line.text}
 			</h2>
 		{/each}
@@ -32,46 +31,56 @@
 <style>
 	.hero-section {
 		position: relative;
-		min-height: 100vh;
-		padding-top: 20vh;
-		padding-bottom: 0;
+		min-height: clamp(520px, 95vh, 1000px);
+		padding-block: clamp(4rem, 8vh, 6rem);
+		overflow: hidden;
 	}
 
-	.hero-heading {
-		color: var(--color-fg);
-		text-shadow: none;
-		width: 60vw;
-		margin: 0 0 10vh 20vw;
-		font-size: var(--hero-h1-size);
+	.hero-name-stack {
+		position: relative;
+		z-index: 1;
+		display: flex;
+		flex-direction: column;
+		text-transform: lowercase;
+		gap: clamp(0.4rem, 1vw, 1rem);
+		margin-left: clamp(3rem, 12vw, 18vw);
+		margin-top: clamp(2rem, 12vh, 8rem);
+	}
+
+	.hero-name {
+		font-size: var(--hero-name-size);
 		font-weight: var(--font-weight-black);
 		letter-spacing: var(--tracking-tight-xl);
-		line-height: 0.97;
-		position: relative;
+		line-height: 0.9;
 	}
 
 	.hero-lines {
-		position: relative;
-		margin-top: -2vh;
+		position: absolute;
+		z-index: 1;
+		top: 48%;
+		left: clamp(45vw, 52vw, 58vw);
+		transform: translate(-15%, -20%);
 		display: flex;
 		flex-direction: column;
-		gap: 2vh;
+		gap: clamp(0.45rem, 2vh, 1.25rem);
 	}
 
-	.hero-title {
-		color: var(--color-hero-muted);
-		width: 30vw;
-		margin-left: 60vw;
+	.hero-line {
 		font-size: var(--hero-line-size);
-		line-height: 1;
 		letter-spacing: var(--tracking-tight-md);
+		color: var(--color-hero-muted);
+		text-align: left;
 		opacity: 0;
 		transform: translateY(15px);
 		animation: hero-fade var(--motion-duration-lg) var(--motion-ease-out) forwards;
 	}
 
-	.hero-title.left {
+	.hero-line--left {
+		text-align: left;
+	}
+
+	.hero-line--right {
 		text-align: right;
-		margin-left: 30vw;
 	}
 
 	@keyframes hero-fade {
@@ -89,26 +98,23 @@
 	@media (max-width: 768px) {
 		.hero-section {
 			min-height: auto;
-			padding-top: 12vh;
-			padding-bottom: 4rem;
+			padding-block: 4rem;
 		}
 
-		.hero-heading {
-			width: 90vw;
-			margin-left: 5vw;
-			font-size: clamp(2.5rem, 10vw, 4rem);
+		.hero-name-stack {
+			margin-left: 1rem;
+			align-items: flex-start;
 		}
 
 		.hero-lines {
-			margin-top: 2rem;
-		}
-
-		.hero-title,
-		.hero-title.left {
-			width: 90vw;
-			margin-left: 5vw;
+			position: relative;
+			top: auto;
+			left: auto;
+			transform: none;
+			align-items: flex-start;
 			text-align: left;
-			font-size: clamp(1.2rem, 5vw, 2rem);
+			margin-top: 2rem;
+			margin-left: 1rem;
 		}
 	}
 </style>

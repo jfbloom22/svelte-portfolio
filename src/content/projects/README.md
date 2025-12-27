@@ -1,8 +1,3 @@
----
-title: Projects Content
-draft: true
----
-
 # Projects content
 
 Each project is authored as Markdown (mdsvex) so it can be prerendered into a static page.
@@ -28,3 +23,4 @@ tags:
 heroImage: /images/projects/mintcraft/hero.webp
 ---
 ```
+

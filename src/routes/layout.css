@@ -4,15 +4,21 @@
 
 @layer components {
 	.jf-section {
-		min-height: 100vh;
 		padding-block: var(--section-padding-y);
-		padding-inline: 0;
+		padding-inline: var(--section-padding-x);
 	}
 
 	.jf-card {
 		background-color: var(--color-surface);
 		border-radius: var(--card-radius);
-		box-shadow: none;
+		box-shadow: var(--card-shadow);
+		transition: transform var(--motion-duration-md) var(--motion-ease-out),
+			box-shadow var(--motion-duration-md) var(--motion-ease-out);
+	}
+
+	.jf-card:hover {
+		transform: translateY(-4px);
+		box-shadow: var(--card-shadow-hover);
 	}
 
 	.jf-section-heading {
@@ -93,10 +99,5 @@
 	.section-grid {
 		display: grid;
 		gap: clamp(1.5rem, 5vw, 5rem);
-	}
-
-	.breakout {
-		width: 100vw;
-		margin-left: calc(50% - 50vw);
 	}
 }

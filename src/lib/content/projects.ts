@@ -5,7 +5,6 @@ type ProjectFrontmatter = {
 	year?: number | string;
 	tags?: string[];
 	heroImage?: string;
-	draft?: boolean;
 };
 
 type ProjectModule = {
@@ -31,9 +30,8 @@ export function getAllProjects(): ProjectListItem[] {
 		return { slug, ...metadata };
 	});
 
-	const visible = projects.filter((project) => !project.draft);
-	visible.sort((a, b) => String(b.year ?? '').localeCompare(String(a.year ?? '')));
-	return visible;
+	projects.sort((a, b) => String(b.year ?? '').localeCompare(String(a.year ?? '')));
+	return projects;
 }
 
 export function getProject(slug: string): { slug: string; metadata: ProjectFrontmatter; component: ProjectModule['default'] } {
