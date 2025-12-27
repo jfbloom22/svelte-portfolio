@@ -36,3 +36,13 @@ npm run build
 You can preview the production build with `npm run preview`.
 
 > To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+
+## Project docs
+
+This repo includes additional context under `docs/`:
+
+- `docs/overview.md` — project goals, commands, env vars
+- `docs/PHASED-PLAN.md` — roadmap
+- `docs/content-authoring.md` — how to work with project content
+- `docs/deploy-fastcomet-ftp.md` — CI/CD + manual deploy steps
+- `docs/decisions/` — lightweight decision records

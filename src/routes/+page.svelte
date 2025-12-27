@@ -65,7 +65,12 @@
 			<ul class="mt-6 grid gap-3">
 				{#each latestPosts as post (post.url)}
 					<li>
-						<a class="block rounded-xl border border-neutral-200 bg-white/60 p-4 hover:bg-white" href={post.url}>
+						<a
+							class="block rounded-xl border border-neutral-200 bg-white/60 p-4 hover:bg-white"
+							href={post.url}
+							target="_blank"
+							rel="noopener noreferrer"
+						>
 							<div class="flex flex-wrap items-baseline justify-between gap-3">
 								<span class="font-medium">{post.title}</span>
 								{#if post.date}

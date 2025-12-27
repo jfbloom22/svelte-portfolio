@@ -16,17 +16,23 @@ function stripHtml(input: string) {
 	return input.replace(/<[^>]*>/g, '').trim();
 }
 
-export async function getLatestWordpressPosts(limit = 5): Promise<ExternalPostListItem[]> {
-	const url = new URL('https://blog.jonathanflower.com/wp-json/wp/v2/posts');
+export async function getLatestWordpressPosts(options?: { base?: string; limit?: number; timeoutMs?: number }): Promise<ExternalPostListItem[]> {
+	const base = options?.base ?? 'https://blog.jonathanflower.com';
+	const limit = options?.limit ?? 5;
+	const timeoutMs = options?.timeoutMs ?? 5000;
+
+	const url = new URL('/wp-json/wp/v2/posts', base);
 	url.searchParams.set('per_page', String(limit));
 	url.searchParams.set('_fields', 'link,title,date');
 
 	const response = await fetch(url, {
 		headers: { Accept: 'application/json' },
-		signal: AbortSignal.timeout(5000)
+		signal: AbortSignal.timeout(timeoutMs)
 	});
 
-	if (!response.ok) return [];
+	if (!response.ok) {
+		throw new Error(`WordPress fetch failed (${response.status} ${response.statusText})`);
+	}
 
 	const posts = (await response.json()) as WpPost[];
 
