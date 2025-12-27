@@ -15,106 +15,93 @@
 </script>
 
 <section class="hero-section">
-	<div class="hero-name-stack">
-		<span class="hero-name hero-name--primary">{primaryName}</span>
-		<span class="hero-name hero-name--secondary">{secondaryName}</span>
-	</div>
-	<div class="hero-lines">
-		{#each lines as line (line.text)}
-			<h2 class={`hero-line hero-line--${line.align}`} style={`animation-delay:${line.delay}s`}>
-				{line.text}
-			</h2>
-		{/each}
-	</div>
+	<h1 class="hero-heading">{primaryName}<br />{secondaryName}</h1>
+	{#each lines as line (line.text)}
+		<h2 class:left={line.align === 'left'} class="hero-title" style={`animation-delay:${line.delay}s`}>
+			{line.text}
+		</h2>
+	{/each}
 </section>
 
 <style>
 	.hero-section {
 		position: relative;
-		min-height: clamp(520px, 95vh, 1000px);
-		padding-block: clamp(4rem, 8vh, 6rem);
-		overflow: hidden;
+		min-height: 100vh;
+		padding-top: 20vh;
+		padding-bottom: 0;
+		padding-inline: 0;
+
+		/* Full-bleed inside the `site-shell` max-width container */
+		left: 50%;
+		margin-left: -50vw;
+		width: 100vw;
 	}
 
-	.hero-name-stack {
+	.hero-heading {
+		width: 60vw;
+		margin-left: 20vw;
+		margin-bottom: 10vh;
 		position: relative;
-		z-index: 1;
-		display: flex;
-		flex-direction: column;
-		text-transform: lowercase;
-		gap: clamp(0.4rem, 1vw, 1rem);
-		margin-left: clamp(3rem, 12vw, 18vw);
-		margin-top: clamp(2rem, 12vh, 8rem);
+		opacity: 0;
+		animation: hero-fade var(--motion-duration-lg) var(--motion-ease-out) forwards;
 	}
 
-	.hero-name {
-		font-size: var(--hero-name-size);
-		font-weight: var(--font-weight-black);
-		letter-spacing: var(--tracking-tight-xl);
-		line-height: 0.9;
-	}
-
-	.hero-lines {
-		position: absolute;
-		z-index: 1;
-		top: 48%;
-		left: clamp(45vw, 52vw, 58vw);
-		transform: translate(-15%, -20%);
-		display: flex;
-		flex-direction: column;
-		gap: clamp(0.45rem, 2vh, 1.25rem);
-	}
-
-	.hero-line {
-		font-size: var(--hero-line-size);
-		letter-spacing: var(--tracking-tight-md);
+	.hero-title {
 		color: var(--color-hero-muted);
-		text-align: left;
+		width: 30vw;
+		margin-left: 60vw;
+		font-size: 5vh;
+		line-height: 1;
+		position: relative;
 		opacity: 0;
 		transform: translateY(15px);
 		animation: hero-fade var(--motion-duration-lg) var(--motion-ease-out) forwards;
 	}
 
-	.hero-line--left {
-		text-align: left;
-	}
-
-	.hero-line--right {
+	.hero-title.left {
 		text-align: right;
+		margin-left: 30vw;
 	}
 
 	@keyframes hero-fade {
-		0% {
+		from {
 			opacity: 0;
 			transform: translateY(20px);
 		}
 
-		100% {
+		to {
 			opacity: 1;
 			transform: translateY(0);
 		}
 	}
 
-	@media (max-width: 768px) {
+	@media (max-width: 479px) {
 		.hero-section {
-			min-height: auto;
-			padding-block: 4rem;
+			padding-top: 25vh;
 		}
 
-		.hero-name-stack {
-			margin-left: 1rem;
-			align-items: flex-start;
+		.hero-heading {
+			margin-left: 10vw;
+			margin-bottom: 5vh;
 		}
 
-		.hero-lines {
-			position: relative;
-			top: auto;
-			left: auto;
+		.hero-title {
+			width: 60vw;
+			margin-left: 30vw;
+			font-size: 4vh;
+		}
+
+		.hero-title.left {
+			margin-left: 10vw;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.hero-heading,
+		.hero-title {
+			animation: none;
+			opacity: 1;
 			transform: none;
-			align-items: flex-start;
-			text-align: left;
-			margin-top: 2rem;
-			margin-left: 1rem;
 		}
 	}
 </style>

@@ -5,6 +5,7 @@
 		summary?: string;
 		year?: number | string;
 		tags?: string[];
+		heroImage?: string;
 	};
 </script>
 
@@ -15,93 +16,92 @@
 </script>
 
 <a class="project-card jf-card" href={resolve('/project/[slug]', { slug: project.slug })}>
-	<div class="project-card__header">
-		<h3>{project.title}</h3>
-		{#if project.year}
-			<span class="project-card__year">{project.year}</span>
+	{#if project.heroImage}
+		<img class="project-card__image" src={project.heroImage} alt={`${project.title} thumbnail`} loading="lazy" />
+	{/if}
+
+	<div class="project-card__content">
+		<h4>{project.title}</h4>
+
+		{#if project.summary}
+			<p class="project-card__summary">{project.summary}</p>
 		{/if}
-	</div>
-	{#if project.summary}
-		<p class="text-muted project-card__summary">{project.summary}</p>
-	{/if}
-	{#if project.tags?.length}
-		<div class="project-card__tags">
-			{#each project.tags as tag (tag)}
-				<span>{tag}</span>
-			{/each}
+
+		<div class="project-card__meta">
+			<div class="project-card__tags">
+				{#if project.tags?.length}
+					{project.tags.join(', ')}
+				{/if}
+			</div>
+
+			{#if project.year}
+				<div class="project-card__year">{project.year}</div>
+			{/if}
 		</div>
-	{/if}
-	</a>
+	</div>
+</a>
 
 <style>
 	.project-card {
-		padding: clamp(1.5rem, 4vw, 4rem);
 		display: grid;
-		gap: 1rem;
-		opacity: 0;
-		transform: translateY(20px);
-		animation: rise var(--motion-duration-md) var(--motion-ease-out) forwards;
+		grid-template-rows: auto 1fr;
+		background-color: var(--color-surface);
+		overflow: hidden;
+		width: 50vw;
+		max-width: 880px;
+		margin-bottom: 10vh;
 	}
 
-	.project-card:nth-child(1) {
-		animation-delay: 0.1s;
+	.project-card:nth-child(2n) {
+		margin-left: auto;
 	}
 
-	.project-card:nth-child(2) {
-		animation-delay: 0.2s;
+	.project-card__image {
+		display: block;
+		width: 100%;
+		height: auto;
+		object-fit: cover;
 	}
 
-	.project-card:nth-child(3) {
-		animation-delay: 0.3s;
-	}
-
-	.project-card:nth-child(4) {
-		animation-delay: 0.4s;
-	}
-
-	.project-card__header {
-		display: flex;
-		align-items: baseline;
-		justify-content: space-between;
-		gap: 1rem;
-	}
-
-	.project-card__year {
-		font-size: 0.85rem;
-		color: var(--color-muted);
-		background-color: color-mix(in srgb, var(--color-muted) 15%, transparent);
-		padding: 0.2rem 0.75rem;
-		border-radius: var(--radius-pill);
+	.project-card__content {
+		padding: 8% 10%;
 	}
 
 	.project-card__summary {
-		font-size: 1rem;
+		color: var(--color-muted);
+		letter-spacing: -0.015em;
+		margin-top: 3vh;
+		margin-bottom: 3vh;
+		font-size: 1.2em;
+		font-weight: var(--font-weight-medium);
 		line-height: 1.5;
 	}
 
+	.project-card__meta {
+		display: grid;
+		grid-template-columns: auto auto;
+		place-items: center start;
+		gap: 20px;
+		color: var(--color-muted);
+		letter-spacing: -0.02em;
+	}
+
 	.project-card__tags {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 0.5rem;
+		min-height: 1em;
 	}
 
-	.project-card__tags span {
-		font-size: 0.8rem;
-		padding: 0.2rem 0.85rem;
-		border-radius: var(--radius-pill);
+	.project-card__year {
+		letter-spacing: -0.04em;
 		background-color: color-mix(in srgb, var(--color-muted) 10%, transparent);
-		color: var(--color-fg);
+		border-radius: 2px;
+		padding: 4px 10px;
+		font-weight: var(--font-weight-medium);
 	}
 
-	@keyframes rise {
-		from {
-			opacity: 0;
-			transform: translateY(20px);
-		}
-
-		to {
-			opacity: 1;
-			transform: translateY(0);
+	@media (max-width: 479px) {
+		.project-card {
+			width: 100%;
+			margin-bottom: 5vh;
 		}
 	}
 </style>

@@ -11,6 +11,8 @@
 	{#each verticalPercents as value, index (value)}
 		<div class="vertical-line" style={`--pos:${value};--delay:${index * 0.05 + 0.2}s`}></div>
 	{/each}
+
+	<div class="background-circle" style="--delay: 0.15s"></div>
 </div>
 
 <style>
@@ -22,7 +24,7 @@
 		justify-content: center;
 		pointer-events: none;
 		z-index: -1;
-		opacity: 0.8;
+		height: 100vh;
 	}
 
 	.horizontal-line,
@@ -54,6 +56,20 @@
 		animation-delay: var(--delay);
 	}
 
+	.background-circle {
+		position: absolute;
+		width: 90vh;
+		height: 90vh;
+		background-color: var(--color-bg);
+		border: 1px solid var(--color-grid-line);
+		border-radius: 50%;
+		opacity: 0;
+		transform: scale(0);
+		transform-origin: center;
+		animation: pop-circle var(--motion-duration-lg) var(--motion-ease-out) forwards;
+		animation-delay: var(--delay);
+	}
+
 	@keyframes draw-x {
 		0% {
 			opacity: 0;
@@ -75,6 +91,35 @@
 		100% {
 			opacity: 1;
 			transform: scaleY(1);
+		}
+	}
+
+	@keyframes pop-circle {
+		0% {
+			opacity: 0;
+			transform: scale(0);
+		}
+
+		100% {
+			opacity: 1;
+			transform: scale(1);
+		}
+	}
+
+	@media (max-width: 479px) {
+		.background-circle {
+			width: 90vw;
+			height: 90vw;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.horizontal-line,
+		.vertical-line,
+		.background-circle {
+			animation: none;
+			opacity: 1;
+			transform: none;
 		}
 	}
 </style>
