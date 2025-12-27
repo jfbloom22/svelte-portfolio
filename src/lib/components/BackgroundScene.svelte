@@ -11,6 +11,8 @@
 	{#each verticalPercents as value, index (value)}
 		<div class="vertical-line" style={`--pos:${value};--delay:${index * 0.05 + 0.2}s`}></div>
 	{/each}
+
+	<div class="background-circle"></div>
 </div>
 
 <style>
@@ -22,7 +24,6 @@
 		justify-content: center;
 		pointer-events: none;
 		z-index: -1;
-		opacity: 0.8;
 	}
 
 	.horizontal-line,
@@ -52,6 +53,16 @@
 		transform: scaleY(0);
 		animation: draw-y var(--motion-duration-lg) var(--motion-ease-out) forwards;
 		animation-delay: var(--delay);
+	}
+
+	.background-circle {
+		position: absolute;
+		width: 90vh;
+		height: 90vh;
+		border-radius: 50%;
+		border: 1px solid var(--color-grid-line);
+		background-color: var(--color-bg);
+		z-index: -1;
 	}
 
 	@keyframes draw-x {

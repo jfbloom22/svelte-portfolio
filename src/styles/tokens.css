@@ -22,7 +22,7 @@
 	--font-weight-medium: 500;
 	--font-weight-semibold: 600;
 	--font-weight-bold: 700;
-	--font-weight-black: 900;
+	--font-weight-black: 800;
 
 	--tracking-tight-xl: -0.07em;
 	--tracking-tight-lg: -0.05em;
@@ -30,27 +30,27 @@
 	--tracking-tight-sm: -0.03em;
 	--tracking-tight-xs: -0.02em;
 
-	--hero-h1-size: clamp(3.5rem, 10.5vh, 8rem); /* h1 scale */
-	--hero-h2-size: clamp(2.5rem, 9vh, 6rem); /* h2 scale */
-	--hero-name-size: clamp(3rem, 11vw, 10rem); /* hero name stack */
-	--hero-line-size: clamp(1.3rem, 3.5vw, 3rem); /* hero line text */
-	--heading-3-size: clamp(1.75rem, 3vw, 3rem);
-	--heading-4-size: clamp(1.5rem, 2vw, 2rem);
-	--heading-5-size: clamp(1.25rem, 1.5vw, 1.5rem);
-	--heading-6-size: clamp(1rem, 1.2vw, 1.2rem);
+	--hero-h1-size: 10.5vh; /* Webflow h1 scale */
+	--hero-h2-size: 9vh; /* Webflow h2 scale */
+	--hero-name-size: 10.5vh; /* hero name stack */
+	--hero-line-size: 5vh; /* hero line text */
+	--heading-3-size: 3em;
+	--heading-4-size: 2em;
+	--heading-5-size: 1.5em;
+	--heading-6-size: 1.2em;
 	--body-size: 1em;
 	--body-line-height: 1.4; /* body line-height (140%) */
 
 	/* Spacing + surfaces */
-	--section-padding-y: clamp(5rem, 15vh, 12rem); /* section padding */
-	--section-padding-x: clamp(1rem, 10vw, 10rem); /* section padding */
+	--section-padding-y: 15vh; /* section padding */
+	--section-padding-x: 10vw; /* section padding */
 	--site-shell-max-width: 1200px;
-	--site-shell-padding-x: clamp(1.5rem, 4vw, 4rem);
-	--site-shell-padding-y: clamp(2rem, 4vw, 4rem);
-	--card-radius: 32px;
+	--site-shell-padding-x: 0;
+	--site-shell-padding-y: 0;
+	--card-radius: 0;
 	--radius-pill: 999px;
 	--card-shadow: 0 10px 30px -10px rgb(0 0 0 / 0.16);
-	--card-shadow-hover: 0 30px 60px -30px rgb(0 0 0 / 0.3);
+	--card-shadow-hover: 0 10px 30px -10px rgb(0 0 0 / 0.16);
 
 	/* Motion */
 	--motion-duration-xs: 120ms;
@@ -133,6 +133,7 @@ h6 {
 	color: var(--color-muted);
 	letter-spacing: var(--tracking-tight-sm);
 	font-size: var(--heading-6-size);
+	font-weight: var(--font-weight-medium);
 	line-height: 1.25;
 }
 
@@ -142,7 +143,7 @@ a {
 }
 
 p {
-	margin: 0 0 0.75rem;
+	margin: 0 0 10px;
 }
 
 section {
