@@ -46,18 +46,50 @@ I am excited about revolutionizing customer experiences by harnessing the unprec
 	const testimonial = {
 		quote: 'The most important – fast understanding of the business needs and translating into code — not many companies can do it.',
 		author: 'Alexander Losev',
-		company: 'BeaconMadaes'
+		company: 'BeaconMadaes',
+		image: {
+			src: '/images/62900db5070f782a68ab352c_Alexander-Losev.webp',
+			alt: 'Alexander Losev headshot'
+		}
 	};
 
 	const tools = [
-		{ name: 'Bear', description: 'The most elegant note taking markdown app available in the Apple ecosystem.' },
-		{ name: 'Unibox', description: 'Once you group emails by sender, there is no going back.' },
-		{ name: 'Visual Studio Code', description: 'VS Code has become a powerful IDE and it is fast. Who could ask for more?' },
-		{ name: 'Pixelmator Pro', description: 'Photoshop but elegant and easy to use.' },
-		{ name: 'PrivateLLM', description: 'ChatGPT but private and works offline.' }
+		{
+			name: 'Bear',
+			description: 'The most elegant note taking markdown app available in the Apple ecosystem.',
+			image: { src: '/images/u4fPSX9Q_400x400-1381493564.webp', alt: 'Bear' }
+		},
+		{
+			name: 'Unibox',
+			description: 'Once you group emails by sender, there is no going back.',
+			image: { src: '/images/Unibox.webp', alt: 'Unibox' }
+		},
+		{
+			name: 'Visual Studio Code',
+			description: 'VS Code has become a powerful IDE and it is fast. Who could ask for more?',
+			image: { src: '/images/Visual-Studio-Code-Logo-1.png', alt: 'Visual Studio Code logo' }
+		},
+		{
+			name: 'Pixelmator Pro',
+			description: 'Photoshop but elegant and easy to use.',
+			image: { src: '/images/ico_pixelamtor-pro-2.02x.webp', alt: 'Pixelmator Pro logo' }
+		},
+		{
+			name: 'PrivateLLM',
+			description: 'ChatGPT but private and works offline.',
+			image: { src: '/images/privatellm.webp', alt: 'PrivateLLM logo' }
+		}
 	];
 
-	const codingApps = ['Visual Studio Code', 'Github Copilot', 'Warp', 'DevUtils'];
+	const codingApps = [
+		{ name: 'Visual Studio Code', image: { src: '/images/Visual-Studio-Code-Logo-1.png', alt: 'VS Code logo' } },
+		{
+			name: 'Github Copilot',
+			image: { src: '/images/Microsoft.VisualStudio.Services.Icons-2076853151.webp', alt: 'Github Copilot logo' }
+		},
+		{ name: 'Warp', image: { src: '/images/warp.svg', alt: 'Warp logo' } },
+		{ name: 'DevUtils', image: { src: '/images/1200x630bb-526247306.webp', alt: 'DevUtils logo' } }
+	];
 
 	const socials = [
 		{ label: '@linkedin', url: 'https://www.linkedin.com/in/jonathan-flower/', count: '510' },
@@ -76,6 +108,16 @@ I am excited about revolutionizing customer experiences by harnessing the unprec
 			{#each bioHistory.split('\n\n') as paragraph (paragraph)}
 				<p class="bio-paragraph">{paragraph}</p>
 			{/each}
+		</div>
+
+		<div class="bio-images">
+			<img class="bio-image" src="/images/IMG_6620.webp" alt="Jonathan Flower portrait" loading="lazy" />
+			<img
+				class="bio-image bio-image--square"
+				src="/images/me-at-the-beach.webp"
+				alt="Jonathan Flower at the beach"
+				loading="lazy"
+			/>
 		</div>
 
 		<div class="bio-motto jf-card">
@@ -111,6 +153,7 @@ I am excited about revolutionizing customer experiences by harnessing the unprec
 		<div class="testimonial-card jf-card">
 			<p class="testimonial-quote">«{testimonial.quote}»</p>
 			<div class="testimonial-author">
+				<img class="testimonial-image" src={testimonial.image.src} alt={testimonial.image.alt} loading="lazy" />
 				<div>
 					<h5>{testimonial.author}</h5>
 					<h6>{testimonial.company}</h6>
@@ -158,6 +201,7 @@ I am excited about revolutionizing customer experiences by harnessing the unprec
 		<div class="tools-grid">
 			{#each tools as tool (tool.name)}
 				<article class="tool-card jf-card">
+					<img class="tool-card__image" src={tool.image.src} alt={tool.image.alt} loading="lazy" />
 					<h4>{tool.name}</h4>
 					<p class="text-muted">{tool.description}</p>
 				</article>
@@ -166,8 +210,11 @@ I am excited about revolutionizing customer experiences by harnessing the unprec
 		<div class="coding-apps jf-card">
 			<h5>Coding Apps<span class="text-muted">:</span></h5>
 				<div class="coding-apps-list">
-					{#each codingApps as app (app)}
-					<span>{app}</span>
+					{#each codingApps as app (app.name)}
+					<span>
+						<img src={app.image.src} alt={app.image.alt} loading="lazy" />
+						{app.name}
+					</span>
 				{/each}
 			</div>
 		</div>
@@ -230,6 +277,24 @@ I am excited about revolutionizing customer experiences by harnessing the unprec
 		font-size: 1.2rem;
 		line-height: 1.7;
 		letter-spacing: var(--tracking-tight-md);
+	}
+
+	.bio-images {
+		display: grid;
+		gap: clamp(1rem, 3vw, 2rem);
+		align-content: start;
+	}
+
+	.bio-image {
+		width: 100%;
+		height: auto;
+		border-radius: var(--card-radius);
+		box-shadow: var(--card-shadow);
+		object-fit: cover;
+	}
+
+	.bio-image--square {
+		aspect-ratio: 1 / 1;
 	}
 
 	.bio-paragraph + .bio-paragraph {
@@ -352,8 +417,18 @@ I am excited about revolutionizing customer experiences by harnessing the unprec
 
 	.testimonial-author {
 		margin-top: 1rem;
+		display: flex;
+		align-items: center;
+		gap: 1rem;
 		font-size: 0.95rem;
 		color: var(--color-muted);
+	}
+
+	.testimonial-image {
+		width: 56px;
+		height: 56px;
+		border-radius: var(--radius-pill);
+		object-fit: cover;
 	}
 
 	.tools-section {
@@ -369,6 +444,14 @@ I am excited about revolutionizing customer experiences by harnessing the unprec
 
 	.tool-card {
 		padding: clamp(1.5rem, 3vw, 3rem);
+		display: grid;
+		gap: 0.75rem;
+	}
+
+	.tool-card__image {
+		width: 72px;
+		height: 72px;
+		object-fit: contain;
 	}
 
 	.coding-apps {
@@ -384,11 +467,20 @@ I am excited about revolutionizing customer experiences by harnessing the unprec
 	}
 
 	.coding-apps-list span {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
 		padding: 0.2rem 0.8rem;
 		font-size: 0.85rem;
 		border-radius: var(--radius-pill);
 		background-color: color-mix(in srgb, var(--color-muted) 10%, transparent);
 		color: var(--color-fg);
+	}
+
+	.coding-apps-list img {
+		width: 18px;
+		height: 18px;
+		object-fit: contain;
 	}
 
 	.contact-section {
