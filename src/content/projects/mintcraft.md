@@ -5,10 +5,10 @@ year: 2023
 tags:
   - Blockchain
   - NFT
-heroImage: /images/projects/mintcraft/657cb165434d7bcf7527c7ce_Screenshot-2023-12-15-at-2.41.27-PM.webp
+heroImage: /images/projects/mintcraft/hero.webp
 ---
 
-![MintCraft hero](/images/projects/mintcraft/657cb165434d7bcf7527c7ce_Screenshot-2023-12-15-at-2.41.27-PM.webp)
+![mintcraft hero](/images/projects/mintcraft/hero.webp)
 
 ### The Need
 
@@ -24,6 +24,6 @@ Typescript, Vue 3, Vercel Serverless Functions, PNPM and NX Monorepo, Hasura, Gr
 
 ## Gallery
 
-![](/images/projects/mintcraft/657cb16d0fff694584cec7d4_Screenshot-2023-12-15-at-2.42.22-PM.webp)
+![](/images/projects/mintcraft/gallery-01.webp)
 
-![](/images/projects/mintcraft/657cb2c551a0ef6035639fad_Screenshot-2023-12-15-at-3.09.57-PM.webp)
+![](/images/projects/mintcraft/gallery-02.webp)

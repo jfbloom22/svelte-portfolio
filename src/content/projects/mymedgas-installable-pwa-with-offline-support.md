@@ -4,10 +4,10 @@ summary: Leveraged PWA, service workers, and IndexDB to create an installable we
 year: 2022
 tags:
   - Custom Software
-heroImage: /images/projects/mymedgas-installable-pwa-with-offline-support/6536a93bb1cf8b1873d469ce_6489cbdee7b2fd62358d8812_Mobile-Desktop-Views.jpg
+heroImage: /images/projects/mymedgas-installable-pwa-with-offline-support/hero.jpg
 ---
 
-![MyMedGas hero](/images/projects/mymedgas-installable-pwa-with-offline-support/6536a93bb1cf8b1873d469ce_6489cbdee7b2fd62358d8812_Mobile-Desktop-Views.jpg)
+![mymedgas-installable-pwa-with-offline-support hero](/images/projects/mymedgas-installable-pwa-with-offline-support/hero.jpg)
 
 ## The Problem
 
@@ -25,10 +25,8 @@ I considere deploying a web based app through Electron, but we also wanted to le
 
 ## Gallery
 
-![](/images/projects/mymedgas-installable-pwa-with-offline-support/6536a94b638490a165799f6f_648721e73b3f995e8d883201_App-ipad-left.jpg)
+![](/images/projects/mymedgas-installable-pwa-with-offline-support/gallery-01.jpg)
 
-![](/images/projects/mymedgas-installable-pwa-with-offline-support/6536a956139649ee377ec819_648721e516f275bd1a42fc58_Digital-promo-screen.jpg)
+![](/images/projects/mymedgas-installable-pwa-with-offline-support/gallery-02.jpg)
 
-![](/images/projects/mymedgas-installable-pwa-with-offline-support/6536a9511f140fd4e932a081_648721e90b2ffbaf8f9bcfc2_pp-ipad-rightGrid-5.jpg)
-
-![](/images/projects/mymedgas-installable-pwa-with-offline-support/6536a93bb1cf8b1873d469ce_6489cbdee7b2fd62358d8812_Mobile-Desktop-Views.jpg)
+![](/images/projects/mymedgas-installable-pwa-with-offline-support/gallery-03.jpg)
