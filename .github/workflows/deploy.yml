@@ -42,5 +42,5 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftp
           local-dir: ./build/
-          server-dir: ./jonathanflower.com/
+          server-dir: ./
           dangerous-clean-slate: true

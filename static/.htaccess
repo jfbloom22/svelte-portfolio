@@ -1,0 +1,61 @@
+Options -Indexes
+
+# Enable rewrite engine
+RewriteEngine On
+
+# Redirect to https and www
+RewriteCond %{HTTPS} off [OR]
+RewriteCond %{HTTP_HOST} !^www\. [NC]
+RewriteRule ^(.*)$ https://www.jonathanflower.com/$1 [L,R=301]
+
+# Don't rewrite files or directories
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Rewrite everything else to index.html to allow HTML5 state links
+RewriteRule ^ index.html [L]
+
+# Set security headers
+&lt;IfModule mod_headers.c&gt;
+  # Prevent clickjacking
+  Header set X-Frame-Options "SAMEORIGIN"
+  # Prevent MIME-sniffing
+  Header set X-Content-Type-Options "nosniff"
+  # XSS protection
+  Header set X-XSS-Protection "1; mode=block"
+  # Enable HSTS
+  Header set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+&lt;/IfModule&gt;
+
+# Enable gzip compression
+&lt;IfModule mod_deflate.c&gt;
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json
+&lt;/IfModule&gt;
+
+# Set caching for static assets
+&lt;IfModule mod_expires.c&gt;
+  ExpiresActive On
+  
+  # Images
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/gif "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType image/x-icon "access plus 1 year"
+  
+  # CSS, JavaScript
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType text/javascript "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+  
+  # Fonts
+  ExpiresByType font/ttf "access plus 1 year"
+  ExpiresByType font/otf "access plus 1 year"
+  ExpiresByType font/woff "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
+  
+  # Default
+  ExpiresDefault "access plus 1 month"
+&lt;/IfModule&gt;
