@@ -4,11 +4,11 @@
 </script>
 
 <div class="background-scene" aria-hidden="true">
-	{#each horizontalPercents as value, index}
+	{#each horizontalPercents as value, index (value)}
 		<div class="horizontal-line" style={`--pos:${value};--delay:${index * 0.05}s`}></div>
 	{/each}
 
-	{#each verticalPercents as value, index}
+	{#each verticalPercents as value, index (value)}
 		<div class="vertical-line" style={`--pos:${value};--delay:${index * 0.05 + 0.2}s`}></div>
 	{/each}
 </div>
@@ -28,7 +28,7 @@
 	.horizontal-line,
 	.vertical-line {
 		position: absolute;
-		background-color: color-mix(in srgb, var(--color-muted) 40%, transparent);
+		background-color: var(--color-grid-line);
 		opacity: 0;
 	}
 

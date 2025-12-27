@@ -1,11 +1,17 @@
-<script lang="ts" context="module">
+<script lang="ts" module>
 	export type HeroLine = { text: string; align: 'left' | 'right'; delay: number };
 </script>
 
 <script lang="ts">
-	export let lines: HeroLine[] = [];
-	export let primaryName = 'Jonathan';
-	export let secondaryName = 'Flower';
+	let {
+		lines = [],
+		primaryName = 'Jonathan',
+		secondaryName = 'Flower'
+	} = $props<{
+		lines?: HeroLine[];
+		primaryName?: string;
+		secondaryName?: string;
+	}>();
 </script>
 
 <section class="hero-section">
@@ -42,7 +48,7 @@
 	}
 
 	.hero-name {
-		font-size: clamp(3rem, 11vw, 10rem);
+		font-size: var(--hero-name-size);
 		font-weight: var(--font-weight-black);
 		letter-spacing: var(--tracking-tight-xl);
 		line-height: 0.9;
@@ -60,9 +66,9 @@
 	}
 
 	.hero-line {
-		font-size: clamp(1.3rem, 3.5vw, 3rem);
+		font-size: var(--hero-line-size);
 		letter-spacing: var(--tracking-tight-md);
-		color: #4a4a4c;
+		color: var(--color-hero-muted);
 		text-align: left;
 		opacity: 0;
 		transform: translateY(15px);

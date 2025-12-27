@@ -1,17 +1,22 @@
 @import '@fontsource-variable/inter/index.css';
 
 :root {
+	/* Webflow core colors */
 	--black: #e3e3e3;
 	--dim-grey: #68686b;
 	--text-black: #252526;
 	--blue: #3d3dd4;
 
+	/* Semantic aliases (use these in app styles) */
 	--color-bg: var(--black);
 	--color-fg: var(--text-black);
 	--color-muted: var(--dim-grey);
 	--color-accent: var(--blue);
 	--color-surface: #ffffff;
+	--color-hero-muted: #4a4a4c;
+	--color-grid-line: #bfbfbf;
 
+	/* Typography */
 	--font-sans: 'InterVariable', 'Inter', sans-serif;
 	--font-weight-regular: 400;
 	--font-weight-medium: 500;
@@ -25,20 +30,29 @@
 	--tracking-tight-sm: -0.03em;
 	--tracking-tight-xs: -0.02em;
 
-	--hero-h1-size: clamp(3.5rem, 10.5vh, 8rem);
-	--hero-h2-size: clamp(2.5rem, 9vh, 6rem);
+	--hero-h1-size: clamp(3.5rem, 10.5vh, 8rem); /* h1 scale */
+	--hero-h2-size: clamp(2.5rem, 9vh, 6rem); /* h2 scale */
+	--hero-name-size: clamp(3rem, 11vw, 10rem); /* hero name stack */
+	--hero-line-size: clamp(1.3rem, 3.5vw, 3rem); /* hero line text */
 	--heading-3-size: clamp(1.75rem, 3vw, 3rem);
 	--heading-4-size: clamp(1.5rem, 2vw, 2rem);
 	--heading-5-size: clamp(1.25rem, 1.5vw, 1.5rem);
 	--heading-6-size: clamp(1rem, 1.2vw, 1.2rem);
 	--body-size: 1em;
-	--body-line-height: 1.4;
+	--body-line-height: 1.4; /* body line-height (140%) */
 
-	--section-padding-y: clamp(5rem, 15vh, 12rem);
-	--section-padding-x: clamp(1rem, 10vw, 10rem);
+	/* Spacing + surfaces */
+	--section-padding-y: clamp(5rem, 15vh, 12rem); /* section padding */
+	--section-padding-x: clamp(1rem, 10vw, 10rem); /* section padding */
+	--site-shell-max-width: 1200px;
+	--site-shell-padding-x: clamp(1.5rem, 4vw, 4rem);
+	--site-shell-padding-y: clamp(2rem, 4vw, 4rem);
 	--card-radius: 32px;
-	--card-shadow: 0 20px 60px -20px rgb(0 0 0 / 0.12);
+	--radius-pill: 999px;
+	--card-shadow: 0 10px 30px -10px rgb(0 0 0 / 0.16);
+	--card-shadow-hover: 0 30px 60px -30px rgb(0 0 0 / 0.3);
 
+	/* Motion */
 	--motion-duration-xs: 120ms;
 	--motion-duration-sm: 220ms;
 	--motion-duration-md: 420ms;

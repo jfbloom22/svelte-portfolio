@@ -41,7 +41,7 @@ See `.env.example` for a starter file (copy to `.env` for local overrides).
 | `docs/` | Reference docs, phased plan, deployment notes |
 | `src/routes/` | SvelteKit routes (homepage + project detail) |
 | `src/lib/content/` | Content loader utilities (projects + WordPress) |
-| `src/styles/` (future) | Tailwind/CSS tokens when extracted |
+| `src/styles/` | Design tokens source of truth (see `src/styles/tokens.css`) |
 
 ## Deployment summary
 

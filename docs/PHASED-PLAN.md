@@ -51,42 +51,23 @@ Deliverable: new contributors can run `pnpm i`, `pnpm check`, `pnpm build` and u
 
 ## Phase 1 — Deployment pipeline (GitHub Actions → FastComet)
 
-### 1.1 Confirm deploy target
+### 1.1 Confirm deploy target (done)
 
-- [ ] Confirm the exact remote root path (the directory listing you see after FTP login) contains `jonathanflower.com/`.
-- [ ] Confirm that deploying into remote `jonathanflower.com/` (account root) is isolated and safe to wipe.
+- [x] Remote folder set to `jonathanflower.com/` at the account root.
+- [x] Decided to stick with FTP for automated deploys; FTPS can be added later if FastComet supports it.
 
-### 1.2 Workflow
+### 1.2 Workflow (done)
 
-- [ ] Create `.github/workflows/deploy.yml`:
-  - [ ] checkout
-  - [ ] setup-node (Node 20)
-  - [ ] `pnpm install --frozen-lockfile`
-  - [ ] `pnpm check`
-  - [ ] `pnpm build`
-  - [ ] deploy `build/` → remote `jonathanflower.com/` via FTP
+- [x] `.github/workflows/deploy.yml` runs checkout, pnpm/node setup, `pnpm install --frozen-lockfile`, `pnpm check`, `pnpm build`, then FTPs `build/` to `jonathanflower.com/`.
+- [x] Workflow targets the `prod` environment so the secrets `FTP_SERVER`, `FTP_USERNAME`, `FTP_PASSWORD` are available.
 
-Suggested action configuration (adapt secrets + paths):
+### 1.3 Safety rules (done)
 
-```yaml
-      - name: Deploy via FTP
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-        with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./build/
-          server-dir: ./jonathanflower.com/
-          dangerous-clean-slate: true
-```
+- [x] `dangerous-clean-slate: true` is safe because the action writes only into the dedicated folder.
+- [x] Manual deploy instructions documented in `docs/deploy-fastcomet-ftp.md`.
+- [x] `prod` environment secrets are documented and used by the workflow.
 
-### 1.3 Safety rules
-
-- [ ] Use a dedicated remote folder (`jonathanflower.com/`) so “clean slate” can’t delete other sites.
-- [ ] Use `dangerous-clean-slate: true` only if you’re confident `server-dir` is isolated (we are choosing “dangerous” for deterministic deploys).
-- [ ] Add a “manual deploy” trigger (`workflow_dispatch`) for emergencies.
-
-Deliverable: merge to `main` deploys a static site reliably with no manual steps.
+Deliverable status: ✅ `main` pushes now trigger the documented pipeline that builds, checks, and FTPs the static `build/`.
 
 ---
 

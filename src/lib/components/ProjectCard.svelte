@@ -1,4 +1,4 @@
-<script lang="ts" context="module">
+<script lang="ts" module>
 	export type ProjectListItem = {
 		slug: string;
 		title: string;
@@ -9,10 +9,12 @@
 </script>
 
 <script lang="ts">
-	export let project: ProjectListItem;
+	import { resolve } from '$app/paths';
+
+	let { project } = $props<{ project: ProjectListItem }>();
 </script>
 
-<a class="project-card jf-card" href={`/project/${project.slug}/`}>
+<a class="project-card jf-card" href={resolve('/project/[slug]', { slug: project.slug })}>
 	<div class="project-card__header">
 		<h3>{project.title}</h3>
 		{#if project.year}
@@ -69,7 +71,7 @@
 		color: var(--color-muted);
 		background-color: color-mix(in srgb, var(--color-muted) 15%, transparent);
 		padding: 0.2rem 0.75rem;
-		border-radius: 999px;
+		border-radius: var(--radius-pill);
 	}
 
 	.project-card__summary {
@@ -86,7 +88,7 @@
 	.project-card__tags span {
 		font-size: 0.8rem;
 		padding: 0.2rem 0.85rem;
-		border-radius: 999px;
+		border-radius: var(--radius-pill);
 		background-color: color-mix(in srgb, var(--color-muted) 10%, transparent);
 		color: var(--color-fg);
 	}

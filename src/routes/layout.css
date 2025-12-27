@@ -18,7 +18,7 @@
 
 	.jf-card:hover {
 		transform: translateY(-4px);
-		box-shadow: 0 30px 60px -30px rgb(0 0 0 / 0.3);
+		box-shadow: var(--card-shadow-hover);
 	}
 
 	.jf-section-heading {
@@ -31,6 +31,10 @@
 }
 
 @layer utilities {
+	.text-fg {
+		color: var(--color-fg);
+	}
+
 	.text-muted {
 		color: var(--color-muted);
 	}
@@ -39,12 +43,36 @@
 		color: var(--color-accent);
 	}
 
+	.bg-bg {
+		background-color: var(--color-bg);
+	}
+
 	.bg-surface {
 		background-color: var(--color-surface);
 	}
 
+	.border-muted {
+		border-color: var(--color-muted);
+	}
+
 	.border-accent {
 		border-color: var(--color-accent);
+	}
+
+	.shadow-card {
+		box-shadow: var(--card-shadow);
+	}
+
+	.shadow-card-hover {
+		box-shadow: var(--card-shadow-hover);
+	}
+
+	.rounded-card {
+		border-radius: var(--card-radius);
+	}
+
+	.rounded-pill {
+		border-radius: var(--radius-pill);
 	}
 
 	.tracking-tight-xl {
@@ -53,6 +81,14 @@
 
 	.tracking-tight-md {
 		letter-spacing: var(--tracking-tight-md);
+	}
+
+	.px-section {
+		padding-inline: var(--section-padding-x);
+	}
+
+	.py-section {
+		padding-block: var(--section-padding-y);
 	}
 
 	.hero-grid {

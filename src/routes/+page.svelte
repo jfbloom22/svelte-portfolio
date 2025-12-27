@@ -130,7 +130,11 @@ I am excited about revolutionizing customer experiences by harnessing the unprec
 			<ul class="writing-list">
 				{#each latestPosts as post (post.url)}
 					<li class="writing-card jf-card">
-					<a href={post.url} target="_blank" rel="noopener noreferrer">
+					<a
+						href={`https://${post.url.replace(/^https?:\/\//, '')}`}
+						target="_blank"
+						rel="noopener noreferrer"
+					>
 							<div class="writing-card__meta">
 								<p class="writing-card__title">{post.title}</p>
 								{#if post.date}
@@ -181,7 +185,12 @@ I am excited about revolutionizing customer experiences by harnessing the unprec
 		<SectionHeading title="follow me" accent=":" showDot={false} />
 		<div class="follow-grid">
 				{#each socials as social (social.label)}
-					<a class="follow-card jf-card" href={social.url} target="_blank" rel="noopener noreferrer">
+					<a
+						class="follow-card jf-card"
+						href={`https://${social.url.replace(/^https?:\/\//, '')}`}
+						target="_blank"
+						rel="noopener noreferrer"
+					>
 					<div class="follow-card__meta">
 						<span>{social.label}</span>
 						<span class="text-muted">{social.count}</span>
@@ -196,9 +205,9 @@ I am excited about revolutionizing customer experiences by harnessing the unprec
 	.site-shell {
 		position: relative;
 		margin: 0 auto;
-		max-width: 1200px;
-		padding-inline: clamp(1.5rem, 4vw, 4rem);
-		padding-block: clamp(2rem, 4vw, 4rem);
+		max-width: var(--site-shell-max-width);
+		padding-inline: var(--site-shell-padding-x);
+		padding-block: var(--site-shell-padding-y);
 	}
 
 	.section-reveal {
@@ -377,7 +386,7 @@ I am excited about revolutionizing customer experiences by harnessing the unprec
 	.coding-apps-list span {
 		padding: 0.2rem 0.8rem;
 		font-size: 0.85rem;
-		border-radius: 999px;
+		border-radius: var(--radius-pill);
 		background-color: color-mix(in srgb, var(--color-muted) 10%, transparent);
 		color: var(--color-fg);
 	}
