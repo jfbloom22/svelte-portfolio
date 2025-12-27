@@ -48,7 +48,21 @@ Preserve existing public paths where feasible (e.g. `/blog-posts/...`, `/blog-po
 
 - Blog posts and projects should be authored as local content (Markdown/mdsvex or typed JSON) and rendered at build time.
 - Images should live in `static/` and be referenced with stable URLs; prefer modern formats (AVIF/WebP) when possible.
+ - Projects live under `src/content/projects/*.md` (frontmatter + mdsvex drives `/project/[slug]`).
+ - Homepage shows latest 5 WordPress posts fetched at build time via `src/lib/content/wordpress.ts`. The build intentionally fails when that fetch fails (`WORDPRESS_*` env vars in `.env.example`).
 
 ### Non-static features to clarify
 
 The current Webflow site includes a contact form and analytics; in a static-only deployment these require third-party services (e.g. hosted forms/email provider, analytics script strategy).
+
+### Visual & motion guide
+
+- CSS variables + Tailwind tokens derived from the Webflow export live in `src/styles/tokens.css`; layout/utility layers appear in `src/routes/layout.css`.
+- Reusable components (HeroSection, SectionHeading, ProjectCard, BackgroundScene) and the `inView` action (`src/lib/actions/in-view.ts`) power staggered animations and section reveals.
+- Always wrap newly created sections in `class="section-reveal"` with `use:inView` so they animate consistently.
+
+### Deployment notes
+
+- Using `@sveltejs/adapter-static` with `trailingSlash = 'always'`. Output `build/` is copied via FTP (GitHub Action in `.github/workflows/deploy.yml`) into FastComet root folder `jonathanflower.com/`.
+- GitHub Actions job targets the `prod` environment to access the secrets `FTP_SERVER`, `FTP_USERNAME`, `FTP_PASSWORD`.
+ - For local development, run `pnpm check` and `pnpm build` (WordPress fetch requires network access) before expecting the action to succeed.
