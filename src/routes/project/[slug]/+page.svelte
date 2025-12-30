@@ -20,6 +20,12 @@
 	});
 
 	const projectLabel = 'Project:';
+	const siteUrl = 'https://www.jonathanflower.com';
+
+	function toAbsoluteUrl(path: string) {
+		if (path.startsWith('http://') || path.startsWith('https://')) return path;
+		return `${siteUrl}${path.startsWith('/') ? '' : '/'}${path}`;
+	}
 	let lightboxOpen = $state(false);
 	let lightboxImage = $state('');
 	let lightboxAlt = $state('');
@@ -35,12 +41,33 @@
 		lightboxImage = '';
 		lightboxAlt = '';
 	}
+
+	$effect(() => {
+		if (typeof document === 'undefined') return;
+		if (!lightboxOpen) return;
+		const previousOverflow = document.body.style.overflow;
+		document.body.style.overflow = 'hidden';
+		return () => {
+			document.body.style.overflow = previousOverflow;
+		};
+	});
 </script>
 
 <svelte:head>
 	<title>{project.metadata.title} | Jonathan Flower</title>
 	{#if project.metadata.summary}
 		<meta name="description" content={project.metadata.summary} />
+		<meta property="og:description" content={project.metadata.summary} />
+		<meta name="twitter:description" content={project.metadata.summary} />
+	{/if}
+	<meta property="og:title" content={`${project.metadata.title} | Jonathan Flower`} />
+	<meta property="og:url" content={`${siteUrl}/project/${project.slug}/`} />
+	<meta name="twitter:title" content={`${project.metadata.title} | Jonathan Flower`} />
+	<meta name="twitter:domain" content="www.jonathanflower.com" />
+	<link rel="canonical" href={`${siteUrl}/project/${project.slug}/`} />
+	{#if project.metadata.heroImage}
+		<meta property="og:image" content={toAbsoluteUrl(project.metadata.heroImage)} />
+		<meta name="twitter:image" content={toAbsoluteUrl(project.metadata.heroImage)} />
 	{/if}
 </svelte:head>
 
