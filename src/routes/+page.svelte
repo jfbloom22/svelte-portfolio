@@ -107,6 +107,13 @@ I am excited about revolutionizing customer experiences by harnessing the unprec
 		{ label: '@twitter', url: 'https://twitter.com/jfBLOOM22', count: '109' },
 		{ label: '@dev.to', url: 'https://dev.to/jfbloom22', count: '22' }
 	];
+
+	const clients = [
+		{ name: 'Oransi', logo: '/images/clients/oransi_logo.webp' },
+		{ name: 'Gif.games', logo: '/images/clients/gifgamesxyz-150x150.png' },
+		{ name: 'Coinonia Labs', logo: '/images/clients/coinonia-512.png' },
+		{ name: 'Beacon Madaes', logo: '/images/clients/beacon-madaes.webp' }
+	];
 </script>
 
 <BackgroundScene />
@@ -153,6 +160,14 @@ I am excited about revolutionizing customer experiences by harnessing the unprec
 		<SectionHeading title="projects" accent="." showDot={false}>
 			<p class="text-muted">A curated selection of recent work.</p>
 		</SectionHeading>
+		<div class="container-working-with">
+			<h6>working with:</h6>
+			<div class="clients-logos">
+				{#each clients as client (client.name)}
+					<img class="clients-logo-image" src={client.logo} alt={`${client.name} logo`} loading="lazy" />
+				{/each}
+			</div>
+		</div>
 		<div class="projects-list">
 			{#each projects as project (project.slug)}
 				<ProjectCard {project} />
@@ -160,12 +175,15 @@ I am excited about revolutionizing customer experiences by harnessing the unprec
 		</div>
 	</section>
 
-	<section class="jf-section testimonial-section">
-		<div class="testimonial-card jf-card">
-			<p class="testimonial-quote">«{testimonial.quote}»</p>
-			<div class="testimonial-author">
+	<section class="jf-section testimonial-section section-reveal" use:inView>
+		<h2 class="quote-heading">
+			client says<span class="text-muted">:</span>
+		</h2>
+		<div class="container-quote">
+			<p class="quote-paragraph">«{testimonial.quote}»</p>
+			<div class="quote-author">
 				<img class="testimonial-image" src={testimonial.image.src} alt={testimonial.image.alt} loading="lazy" />
-				<div>
+				<div class="quote-author-name">
 					<h5>{testimonial.author}</h5>
 					<h6>{testimonial.company}</h6>
 				</div>
@@ -222,54 +240,62 @@ I am excited about revolutionizing customer experiences by harnessing the unprec
 	</section>
 
 	<section class="jf-section tools-section section-reveal" use:inView>
-		<SectionHeading title="tools & services" showDot={false}>
-			<p class="text-muted">Apps and services I rely on daily.</p>
-		</SectionHeading>
-		<div class="tools-grid">
-			{#each tools as tool (tool.name)}
-				<article class="tool-card jf-card">
-					<img class="tool-card__image" src={tool.image.src} alt={tool.image.alt} loading="lazy" />
-					<h4>{tool.name}</h4>
-					<p class="text-muted">{tool.description}</p>
+		<div class="tools-container">
+			<div class="tools-item large">
+				<h2 class="tools-heading-copy">
+					<span class="text-muted">tools & services<br /></span>
+					I'm using<span class="text-muted">:</span>
+				</h2>
+			</div>
+
+			{#each tools as tool, index (tool.name)}
+				<article class={`tools-item ${index % 2 === 1 ? 'small' : ''}`}>
+					<img class="tools-image" src={tool.image.src} alt={tool.image.alt} loading="lazy" />
+					<div class="tools-item-content">
+						<h4>{tool.name}</h4>
+						<p class="tools-item-about">{tool.description}</p>
+					</div>
 				</article>
 			{/each}
-		</div>
-		<div class="coding-apps jf-card">
-			<h5>Coding Apps<span class="text-muted">:</span></h5>
-			<div class="coding-apps-list">
+
+			<div class="tools-item tall">
+				<h4>Coding Apps<span class="text-muted">:</span></h4>
 				{#each codingApps as app (app.name)}
-					<span>
+					<div class="tools-item-tall">
 						<img src={app.image.src} alt={app.image.alt} loading="lazy" />
-						{app.name}
-					</span>
+						<span>{app.name}</span>
+					</div>
 				{/each}
 			</div>
 		</div>
 	</section>
 
 	<section class="jf-section contact-section section-reveal" use:inView>
-		<SectionHeading title="contact me" accent=":" showDot={false} />
-		<div class="contact-card jf-card">
-			<p>Chat with me on <strong>LinkedIn</strong> for the fastest response.</p>
-			<a class="contact-link" href="https://www.linkedin.com/in/jonathan-flower/" target="_blank" rel="noopener noreferrer">@linkedin</a>
+		<h2 class="contact-heading">
+			contact<br />me<span class="text-muted">:</span>
+		</h2>
+		<div class="contact-container">
+			<a class="contact-link" href="mailto:me@jonathanflower.com">me@jonathanflower.com</a>
 		</div>
 	</section>
 
 	<section class="jf-section follow-section section-reveal" use:inView>
-		<SectionHeading title="follow me" accent=":" showDot={false} />
-		<div class="follow-grid">
-				{#each socials as social (social.label)}
+		<h2 class="follow-me-heading">
+			follow me<span class="text-muted">:</span>
+		</h2>
+		<div class="follow-me-socials">
+			{#each socials as social, index (social.label)}
+				<div class={`follow-me-item ${index === 0 ? 'first' : index === 1 ? 'second' : 'third'}`}>
 					<a
-						class="follow-card jf-card"
+						class="follow-link"
 						href={`https://${social.url.replace(/^https?:\/\//, '')}`}
 						target="_blank"
 						rel="noopener noreferrer"
 					>
-					<div class="follow-card__meta">
-						<span>{social.label}</span>
-						<span class="text-muted">{social.count}</span>
-					</div>
-				</a>
+						{social.label}
+					</a>
+					<div class="follow-counter">{social.count}</div>
+				</div>
 			{/each}
 		</div>
 	</section>
@@ -353,6 +379,33 @@ I am excited about revolutionizing customer experiences by harnessing the unprec
 		margin-left: 10%;
 		margin-right: 10%;
 	}
+
+	.container-working-with {
+		display: grid;
+		grid-template-columns: 20vw auto;
+		align-items: center;
+		margin-bottom: 10vh;
+		margin-left: 20%;
+		margin-right: 5vw;
+	}
+
+	.clients-logos {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+		gap: 2vw;
+		align-items: center;
+	}
+
+	.clients-logo-image {
+		max-width: 100%;
+		opacity: 0.6;
+		transition: opacity var(--motion-duration-sm) var(--motion-ease-out);
+	}
+
+	.clients-logo-image:hover {
+		opacity: 1;
+	}
+
 
 	.writing-section {
 		display: grid;
@@ -462,124 +515,307 @@ I am excited about revolutionizing customer experiences by harnessing the unprec
 		color: var(--color-muted);
 	}
 
-	.testimonial-section {
+	.quote-heading {
+		margin-left: 20%;
+		line-height: 0.8;
+	}
+
+	.container-quote {
+		background-color: var(--color-surface);
+		margin-left: 20%;
+		margin-right: 20%;
+		padding-top: 15vh;
+		padding-left: 10vw;
+		padding-right: 10vw;
+		padding-bottom: 8vh;
+	}
+
+	.quote-paragraph {
+		letter-spacing: -0.015em;
+		margin-bottom: 10vh;
+		font-size: 1.7em;
+		font-weight: var(--font-weight-medium);
+		line-height: 1.35;
+	}
+
+	.quote-author {
 		display: grid;
-		gap: clamp(1rem, 3vw, 3rem);
+		grid-template-columns: 10vw auto;
+		gap: 5vw;
+		margin-left: -5vw;
 	}
 
-	.testimonial-card {
-		padding: clamp(2rem, 4vw, 4rem);
-		font-size: 1.3rem;
-		line-height: 1.6;
-	}
-
-	.testimonial-author {
-		margin-top: 1rem;
-		display: flex;
-		align-items: center;
-		gap: 1rem;
-		font-size: 0.95rem;
-		color: var(--color-muted);
+	.quote-author-name {
+		display: grid;
+		gap: 5px;
+		align-content: center;
 	}
 
 	.testimonial-image {
-		width: 56px;
-		height: 56px;
+		width: min(10vw, 72px);
+		height: min(10vw, 72px);
 		border-radius: var(--radius-pill);
 		object-fit: cover;
 	}
 
-	.tools-section {
+	.tools-container {
 		display: grid;
-		gap: clamp(2rem, 6vw, 6rem);
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 1.5vw;
+		padding-inline: 2vw;
 	}
 
-	.tools-grid {
+	.tools-item {
+		background-color: var(--color-surface);
+		padding: 3vw 4vw;
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-		gap: clamp(1rem, 3vw, 3rem);
+		gap: 1vh;
 	}
 
-	.tool-card {
-		padding: clamp(1.5rem, 3vw, 3rem);
-		display: grid;
-		gap: 0.75rem;
-	}
-
-	.tool-card__image {
-		width: 72px;
-		height: 72px;
-		object-fit: contain;
-	}
-
-	.coding-apps {
-		padding: clamp(1.5rem, 3vw, 3rem);
-		display: grid;
-		gap: 0.5rem;
-	}
-
-	.coding-apps-list {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 0.5rem;
-	}
-
-	.coding-apps-list span {
-		display: inline-flex;
+	.tools-item.small {
+		grid-template-columns: 64px 1fr;
 		align-items: center;
-		gap: 0.5rem;
-		padding: 0.2rem 0.8rem;
-		font-size: 0.85rem;
-		border-radius: var(--radius-pill);
-		background-color: color-mix(in srgb, var(--color-muted) 10%, transparent);
-		color: var(--color-fg);
+		padding-inline: 2vw;
 	}
 
-	.coding-apps-list img {
-		width: 18px;
-		height: 18px;
+	.tools-item.large {
+		display: flex;
+		align-items: center;
+	}
+
+	.tools-item.tall {
+		align-content: start;
+		align-items: start;
+		gap: 3vh;
+		padding-inline: 3vw;
+	}
+
+	.tools-heading-copy {
+		line-height: 0.9;
+	}
+
+	.tools-image {
+		max-width: 128px;
+		margin-bottom: 2vh;
+	}
+
+	.tools-item.small .tools-image {
+		max-width: 64px;
+		margin-bottom: 0;
+	}
+
+	.tools-item-content {
+		display: grid;
+		gap: 1vh;
+	}
+
+	.tools-item-about {
+		color: var(--color-muted);
+		margin-bottom: 0;
+	}
+
+	.tools-item-tall {
+		display: grid;
+		grid-template-columns: 48px auto;
+		align-items: center;
+		gap: 2vw;
+	}
+
+	.tools-item-tall img {
+		width: 48px;
+		height: 48px;
 		object-fit: contain;
 	}
 
-	.contact-section {
-		display: grid;
-		gap: 1rem;
+	.tools-item-tall span {
+		font-weight: var(--font-weight-medium);
 	}
 
-	.contact-card {
-		padding: clamp(1.5rem, 3vw, 3rem);
-		display: flex;
-		flex-direction: column;
-		gap: 0.5rem;
+	.contact-heading {
+		margin-left: 20%;
+		font-size: 22vh;
+		font-weight: var(--font-weight-black);
+		line-height: 0.7;
+	}
+
+	.contact-container {
+		display: grid;
+		gap: 3vh;
+		margin-bottom: 20vh;
+		margin-left: 60%;
 	}
 
 	.contact-link {
-		color: var(--color-accent);
-		font-size: 1.2rem;
-	}
-
-	.follow-section {
-		display: grid;
-		gap: 1rem;
-	}
-
-	.follow-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-		gap: 1rem;
-	}
-
-	.follow-card {
-		padding: 1.5rem;
-		text-decoration: none;
-	}
-
-	.follow-card__meta {
-		display: flex;
-		align-items: baseline;
-		justify-content: space-between;
-		font-size: 1rem;
+		color: var(--color-muted);
+		letter-spacing: -0.02em;
+		font-size: 1.5em;
 		font-weight: var(--font-weight-semibold);
+		line-height: 1;
+		text-decoration: none;
+		transition: color var(--motion-duration-sm) var(--motion-ease-out);
+	}
+
+	.contact-link:hover {
+		color: var(--color-accent);
+	}
+
+	.follow-me-heading {
+		margin-bottom: 10vh;
+		margin-left: 20%;
+	}
+
+	.follow-me-socials {
+		display: grid;
+		gap: 2vh;
+		margin-bottom: 10vh;
+		margin-left: 30%;
+		margin-right: 20%;
+	}
+
+	.follow-me-item {
+		background-color: var(--color-surface);
+		display: grid;
+		grid-template-columns: 1.5fr 1fr;
+		place-items: center start;
+		padding: 4% 5%;
+	}
+
+	.follow-me-item.first {
+		margin-right: 10vw;
+	}
+
+	.follow-me-item.second {
+		margin-left: 10vw;
+	}
+
+	.follow-me-item.third {
+		margin-left: 5vw;
+		margin-right: 5vw;
+	}
+
+	.follow-link {
+		color: var(--color-muted);
+		letter-spacing: -0.02em;
+		font-size: 1.8em;
+		font-weight: var(--font-weight-semibold);
+		line-height: 1;
+		text-decoration: none;
+		transition: color var(--motion-duration-sm) var(--motion-ease-out);
+	}
+
+	.follow-link:hover {
+		color: var(--color-accent);
+	}
+
+	.follow-counter {
+		font-size: 1.5em;
+		line-height: 1;
+	}
+
+	@media (max-width: 1024px) {
+		.container-working-with {
+			grid-template-columns: 1fr;
+			gap: 2vh;
+			margin-left: 10%;
+			margin-right: 10%;
+		}
+
+		.quote-heading {
+			margin-left: 10%;
+		}
+
+		.container-quote {
+			margin-left: 10%;
+			margin-right: 10%;
+			padding-left: 6vw;
+			padding-right: 6vw;
+		}
+
+		.tools-container {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+
+		.contact-container {
+			margin-left: 40%;
+		}
+
+		.follow-me-socials {
+			margin-left: 20%;
+			margin-right: 10%;
+		}
+	}
+
+	@media (max-width: 768px) {
+		.clients-logos {
+			grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+			gap: 1.5rem;
+		}
+
+		.quote-heading {
+			margin-left: 0;
+			font-size: clamp(2.5rem, 10vw, 5rem);
+			line-height: 0.9;
+		}
+
+		.container-quote {
+			margin-left: 0;
+			margin-right: 0;
+			padding: 10vh 6vw 8vh;
+		}
+
+		.quote-author {
+			grid-template-columns: 72px 1fr;
+			margin-left: 0;
+			gap: 1.5rem;
+		}
+
+		.contact-heading {
+			margin-left: 0;
+			font-size: clamp(3rem, 16vw, 7rem);
+		}
+
+		.contact-container {
+			margin-left: 0;
+		}
+
+		.tools-container {
+			grid-template-columns: 1fr;
+			padding-inline: 0;
+			gap: 1.25rem;
+		}
+
+		.tools-item {
+			padding: 1.5rem;
+		}
+
+		.tools-item.small {
+			grid-template-columns: 56px 1fr;
+			padding-inline: 1.5rem;
+		}
+
+		.tools-item.tall {
+			padding-inline: 1.5rem;
+		}
+
+		.follow-me-heading {
+			margin-left: 0;
+		}
+
+		.follow-me-socials {
+			margin-left: 0;
+			margin-right: 0;
+		}
+
+		.follow-me-item {
+			grid-template-columns: 1fr auto;
+			padding: 1.25rem 1.5rem;
+		}
+
+		.follow-me-item.first,
+		.follow-me-item.second,
+		.follow-me-item.third {
+			margin: 0;
+		}
 	}
 
 

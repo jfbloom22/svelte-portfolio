@@ -5,9 +5,11 @@ year: 2022
 tags:
   - Custom Software
 heroImage: /images/projects/mymedgas-installable-pwa-with-offline-support/hero.jpg
+gallery:
+  - /images/projects/mymedgas-installable-pwa-with-offline-support/gallery-01.jpg
+  - /images/projects/mymedgas-installable-pwa-with-offline-support/gallery-02.jpg
+  - /images/projects/mymedgas-installable-pwa-with-offline-support/gallery-03.jpg
 ---
-
-![mymedgas-installable-pwa-with-offline-support hero](/images/projects/mymedgas-installable-pwa-with-offline-support/hero.jpg)
 
 ## The Problem
 
@@ -22,11 +24,3 @@ Can a web app support potentially multiple gigs of information needed for offlin
 ## The Solution
 
 I considere deploying a web based app through Electron, but we also wanted to leave open the possibility of supporting Apple iPads. An installable PWA was the best solution because it enabled us to leverage service workers, IndexDB, React, and Redux to create an installable web app. Windows users really enjoyed having a desktop app experience after installing the PWA. Tech Stack: React, Redux, .Net Core, MS SQL.
-
-## Gallery
-
-![](/images/projects/mymedgas-installable-pwa-with-offline-support/gallery-01.jpg)
-
-![](/images/projects/mymedgas-installable-pwa-with-offline-support/gallery-02.jpg)
-
-![](/images/projects/mymedgas-installable-pwa-with-offline-support/gallery-03.jpg)

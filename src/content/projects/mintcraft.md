@@ -6,9 +6,10 @@ tags:
   - Blockchain
   - NFT
 heroImage: /images/projects/mintcraft/hero.webp
+gallery:
+  - /images/projects/mintcraft/gallery-01.webp
+  - /images/projects/mintcraft/gallery-02.webp
 ---
-
-![mintcraft hero](/images/projects/mintcraft/hero.webp)
 
 ### The Need
 
@@ -21,9 +22,3 @@ We crafted a smart contract factory along with a friendly front end that enabled
 ### The Stack
 
 Typescript, Vue 3, Vercel Serverless Functions, PNPM and NX Monorepo, Hasura, GraphQL, Postgres, PWA
-
-## Gallery
-
-![](/images/projects/mintcraft/gallery-01.webp)
-
-![](/images/projects/mintcraft/gallery-02.webp)

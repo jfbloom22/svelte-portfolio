@@ -1,5 +1,7 @@
 <script lang="ts">
 	import type { ComponentType } from 'svelte';
+	import BackgroundScene from '$lib/components/BackgroundScene.svelte';
+	import { resolve } from '$app/paths';
 
 	let { data } = $props();
 
@@ -12,9 +14,12 @@
 			year?: number | string;
 			tags?: string[];
 			heroImage?: string;
+			gallery?: string[];
 		};
 		component: ComponentType;
 	});
+
+	const projectLabel = 'Project:';
 </script>
 
 <svelte:head>
@@ -24,35 +29,291 @@
 	{/if}
 </svelte:head>
 
-<article class="mx-auto max-w-3xl px-6 py-16">
-	<header class="mb-10">
-		<h1 class="text-4xl font-semibold tracking-tight">{project.metadata.title}</h1>
+<BackgroundScene />
 
-		{#if project.metadata.summary}
-			<p class="mt-4 text-lg text-neutral-600">{project.metadata.summary}</p>
-		{/if}
+<section class="section project">
+	<div class="project-content">
+		<div class="header-logo header-logo-wrap">
+			<a class="header-logo__link" href={resolve('/')}>
+				<img
+					src="/images/_archive/myself0.5x.webp"
+					alt="Jonathan Flower"
+					loading="lazy"
+					class="header-logo__image"
+				/>
+			</a>
+			<div>{projectLabel}</div>
+		</div>
 
-		<div class="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm text-neutral-600">
+		<h1 class="project-page-heading">{project.metadata.title}</h1>
+
+		<div class="project-page-meta">
 			{#if project.metadata.role}
-				<div>{project.metadata.role}</div>
-			{/if}
-			{#if project.metadata.year}
-				<div>{project.metadata.year}</div>
+				<h6>{project.metadata.role}</h6>
 			{/if}
 			{#if project.metadata.tags?.length}
-				<div class="flex flex-wrap gap-2">
-					{#each project.metadata.tags as tag}
-						<span class="rounded-full bg-neutral-100 px-3 py-1 text-neutral-700">{tag}</span>
-					{/each}
-				</div>
+				<h6>{project.metadata.tags.join(', ')}</h6>
+			{/if}
+			{#if project.metadata.year}
+				<h6>{project.metadata.year}</h6>
 			{/if}
 		</div>
-	</header>
 
-	<div class="prose prose-neutral max-w-none">
+		{#if project.metadata.summary}
+			<p class="project-page-description">{project.metadata.summary}</p>
+		{/if}
+	</div>
+
+	<div class="project-image-wrap">
+		{#if project.metadata.heroImage}
+			<img class="project-image" src={project.metadata.heroImage} alt={project.metadata.title} loading="lazy" />
+		{/if}
+	</div>
+</section>
+
+<section class="section project project-detail">
+	<div class="rich-text-block in-project-page">
 		{#if project.component}
 			{@const ProjectComponent = project.component}
 			<ProjectComponent />
 		{/if}
 	</div>
-</article>
+
+	{#if project.metadata.gallery?.length}
+		<div class="project-gallery">
+			{#each project.metadata.gallery as image (image)}
+				<div class="project-gallery-item">
+					<img src={image} alt={`${project.metadata.title} gallery`} loading="lazy" />
+				</div>
+			{/each}
+		</div>
+	{/if}
+</section>
+
+<style>
+	.section.project {
+		display: grid;
+		grid-template-columns: 60% 40%;
+		align-items: start;
+		min-height: 80vh;
+		padding-top: 0;
+		padding-bottom: 0;
+		column-gap: 5vw;
+	}
+
+	.project-content {
+		min-height: 80vh;
+		padding-top: 12vh;
+		padding-right: 5vw;
+		line-height: 1.2;
+	}
+
+	.header-logo {
+		display: grid;
+		grid-template-columns: 10vh 1fr;
+		align-items: center;
+		gap: 2vw;
+		color: var(--color-muted);
+		letter-spacing: -0.04em;
+		margin-bottom: 6vh;
+		margin-left: 7vw;
+		font-size: 1.6em;
+		font-weight: var(--font-weight-medium);
+		line-height: 1;
+	}
+
+	.header-logo__link {
+		display: inline-flex;
+	}
+
+	.header-logo__image {
+		width: 8vh;
+		height: 8vh;
+		object-fit: contain;
+	}
+
+	.project-page-heading {
+		margin-bottom: 2vh;
+		margin-left: 7vw;
+		font-size: 9vh;
+		display: inline-block;
+	}
+
+	.project-page-description {
+		letter-spacing: -0.01em;
+		max-width: 560px;
+		margin-bottom: 0;
+		margin-left: 7vw;
+		font-size: 1.6em;
+		font-weight: var(--font-weight-medium);
+		line-height: 1.4;
+	}
+
+	.project-page-meta {
+		display: grid;
+		grid-template-columns: auto auto 1fr;
+		place-items: center start;
+		gap: 30px;
+		min-height: 10vh;
+		margin-left: 7vw;
+		margin-top: 2vh;
+		font-size: 0.9em;
+		color: var(--color-muted);
+		letter-spacing: -0.02em;
+	}
+
+	.project-image-wrap {
+		display: flex;
+		align-items: flex-start;
+		justify-content: flex-start;
+		min-height: 80vh;
+		line-height: 1.2;
+		padding-top: 10vh;
+	}
+
+	.project-image {
+		width: min(100%, 480px);
+		height: auto;
+		display: block;
+	}
+
+	.project-detail {
+		grid-template-columns: 60% 40%;
+		padding-top: 10vh;
+		padding-bottom: 10vh;
+		column-gap: 5vw;
+	}
+
+	.rich-text-block.in-project-page {
+		background-color: var(--color-surface);
+		max-width: 560px;
+		margin-bottom: 10vh;
+		margin-left: 14vw;
+		padding: 6vh 4vw 5vh;
+	}
+
+	.project-gallery {
+		column-count: 2;
+		column-gap: 0;
+		margin-left: auto;
+		margin-right: auto;
+		padding-right: 2vw;
+	}
+
+	.project-gallery-item {
+		break-inside: avoid;
+		margin-bottom: 2vw;
+	}
+
+	.project-gallery-item img {
+		width: 100%;
+		height: auto;
+		display: block;
+	}
+
+	.rich-text-block.in-project-page :global(h2),
+	.rich-text-block.in-project-page :global(h3) {
+		margin-top: 2rem;
+	}
+
+	.rich-text-block.in-project-page :global(p) {
+		margin: 0 0 1rem;
+		line-height: 1.6;
+	}
+
+	.rich-text-block.in-project-page :global(img) {
+		width: 100%;
+		height: auto;
+		display: block;
+		margin: 2rem 0;
+		border-radius: 12px;
+	}
+
+	@media (max-width: 1024px) {
+		.section.project {
+			grid-template-columns: 1fr;
+			row-gap: 5vh;
+		}
+
+		.project-content {
+			min-height: auto;
+			padding-right: 7vw;
+		}
+
+		.header-logo {
+			margin-left: 7vw;
+		}
+
+		.project-page-heading {
+			margin-left: 7vw;
+			margin-bottom: 4vh;
+		}
+
+		.project-page-meta {
+			grid-template-columns: auto auto;
+		}
+
+		.project-image-wrap {
+			min-height: auto;
+			padding-left: 20vw;
+			padding-top: 0;
+		}
+
+		.project-detail {
+			grid-template-columns: 1fr;
+			padding-top: 5vh;
+			padding-bottom: 5vh;
+		}
+
+		.rich-text-block.in-project-page {
+			margin-left: 7vw;
+			margin-right: 7vw;
+			padding-left: 10vw;
+			padding-right: 10vw;
+		}
+
+		.project-gallery {
+			column-count: 2;
+			padding-right: 0;
+			margin: 0 7vw 5vh;
+		}
+	}
+
+	@media (max-width: 768px) {
+		.header-logo {
+			grid-template-columns: 10vw 1fr;
+		}
+
+		.project-page-heading {
+			font-size: clamp(2rem, 8vw, 3.5rem);
+		}
+
+		.project-image {
+			height: auto;
+			max-height: none;
+			object-fit: contain;
+		}
+
+		.project-page-meta {
+			margin-left: 20vw;
+			margin-bottom: 2vh;
+			font-size: 1em;
+		}
+
+		.project-image-wrap {
+			padding-left: 0;
+		}
+
+		.rich-text-block.in-project-page {
+			margin-left: 0;
+			margin-right: 0;
+			padding-left: 7vw;
+			padding-right: 7vw;
+		}
+
+		.project-gallery {
+			column-count: 1;
+			margin: 0 7vw 5vh;
+		}
+	}
+</style>

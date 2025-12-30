@@ -5,6 +5,7 @@ type ProjectFrontmatter = {
 	year?: number | string;
 	tags?: string[];
 	heroImage?: string;
+	gallery?: string[];
 	draft?: boolean;
 };
 

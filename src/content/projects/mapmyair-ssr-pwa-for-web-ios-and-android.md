@@ -5,9 +5,13 @@ year: 2022
 tags:
   - Custom Software
 heroImage: /images/projects/mapmyair-ssr-pwa-for-web-ios-and-android/hero.jpg
+gallery:
+  - /images/projects/mapmyair-ssr-pwa-for-web-ios-and-android/gallery-01.jpg
+  - /images/projects/mapmyair-ssr-pwa-for-web-ios-and-android/gallery-02.jpg
+  - /images/projects/mapmyair-ssr-pwa-for-web-ios-and-android/gallery-03.jpg
+  - /images/projects/mapmyair-ssr-pwa-for-web-ios-and-android/gallery-04.jpg
+  - /images/projects/mapmyair-ssr-pwa-for-web-ios-and-android/gallery-05.jpg
 ---
-
-![mapmyair-ssr-pwa-for-web-ios-and-android hero](/images/projects/mapmyair-ssr-pwa-for-web-ios-and-android/hero.jpg)
 
 ## The Problem
 
@@ -26,15 +30,3 @@ The Oransi products displayed in the app were pulled from Oransi's Shopify. We d
 ## The Stack
 
 Angular Universal, Nestjs, Redux Toolkit, Observables, Ionic Capacitor, Shopify integration
-
-## Gallery
-
-![](/images/projects/mapmyair-ssr-pwa-for-web-ios-and-android/gallery-01.jpg)
-
-![](/images/projects/mapmyair-ssr-pwa-for-web-ios-and-android/gallery-02.jpg)
-
-![](/images/projects/mapmyair-ssr-pwa-for-web-ios-and-android/gallery-03.jpg)
-
-![](/images/projects/mapmyair-ssr-pwa-for-web-ios-and-android/gallery-04.jpg)
-
-![](/images/projects/mapmyair-ssr-pwa-for-web-ios-and-android/gallery-05.jpg)
