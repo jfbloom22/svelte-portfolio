@@ -20,6 +20,21 @@
 	});
 
 	const projectLabel = 'Project:';
+	let lightboxOpen = $state(false);
+	let lightboxImage = $state('');
+	let lightboxAlt = $state('');
+
+	function openLightbox(src: string, alt: string) {
+		lightboxImage = src;
+		lightboxAlt = alt;
+		lightboxOpen = true;
+	}
+
+	function closeLightbox() {
+		lightboxOpen = false;
+		lightboxImage = '';
+		lightboxAlt = '';
+	}
 </script>
 
 <svelte:head>
@@ -83,12 +98,40 @@
 		<div class="project-gallery">
 			{#each project.metadata.gallery as image (image)}
 				<div class="project-gallery-item">
-					<img src={image} alt={`${project.metadata.title} gallery`} loading="lazy" />
+					<button
+						type="button"
+						class="project-gallery-button"
+						onclick={() => openLightbox(image, project.metadata.title)}
+					>
+						<img src={image} alt={`${project.metadata.title} gallery`} loading="lazy" />
+					</button>
 				</div>
 			{/each}
 		</div>
 	{/if}
 </section>
+
+{#if lightboxOpen}
+	<div
+		class="lightbox"
+		role="dialog"
+		aria-modal="true"
+		tabindex="0"
+		onclick={(event) => {
+			if (event.target === event.currentTarget) closeLightbox();
+		}}
+		onkeydown={(event) => {
+			if (event.key === 'Escape') closeLightbox();
+		}}
+	>
+		<div class="lightbox-content">
+			<button type="button" class="lightbox-close" onclick={closeLightbox} aria-label="Close image">
+				×
+			</button>
+			<img src={lightboxImage} alt={lightboxAlt} />
+		</div>
+	</div>
+{/if}
 
 <style>
 	.section.project {
@@ -137,6 +180,7 @@
 		margin-left: 7vw;
 		font-size: 9vh;
 		display: inline-block;
+		line-height: 0.95;
 	}
 
 	.project-page-description {
@@ -154,9 +198,9 @@
 		grid-template-columns: auto auto 1fr;
 		place-items: center start;
 		gap: 30px;
-		min-height: 10vh;
+		min-height: 6vh;
 		margin-left: 7vw;
-		margin-top: 2vh;
+		margin-top: 1vh;
 		font-size: 0.9em;
 		color: var(--color-muted);
 		letter-spacing: -0.02em;
@@ -179,7 +223,7 @@
 
 	.project-detail {
 		grid-template-columns: 60% 40%;
-		padding-top: 10vh;
+		padding-top: 8vh;
 		padding-bottom: 10vh;
 		column-gap: 5vw;
 	}
@@ -187,9 +231,9 @@
 	.rich-text-block.in-project-page {
 		background-color: var(--color-surface);
 		max-width: 560px;
-		margin-bottom: 10vh;
+		margin-bottom: 8vh;
 		margin-left: 14vw;
-		padding: 6vh 4vw 5vh;
+		padding: 5vh 4vw 4vh;
 	}
 
 	.project-gallery {
@@ -198,6 +242,7 @@
 		margin-left: auto;
 		margin-right: auto;
 		padding-right: 2vw;
+		padding-top: 1vh;
 	}
 
 	.project-gallery-item {
@@ -209,6 +254,64 @@
 		width: 100%;
 		height: auto;
 		display: block;
+	}
+
+	.project-gallery-button {
+		border: none;
+		padding: 0;
+		margin: 0;
+		background: transparent;
+		cursor: zoom-in;
+		width: 100%;
+	}
+
+	.lightbox {
+		position: fixed;
+		inset: 0;
+		display: grid;
+		place-items: center;
+		z-index: 50;
+		background: rgb(0 0 0 / 0.6);
+		padding: 5vh 5vw;
+	}
+
+	.lightbox:focus {
+		outline: none;
+	}
+
+	.lightbox-content {
+		position: relative;
+		max-width: 90vw;
+		max-height: 90vh;
+		background: var(--color-surface);
+		box-shadow: var(--card-shadow);
+		border-radius: 16px;
+		padding: 1rem;
+	}
+
+	.lightbox-content img {
+		max-width: 85vw;
+		max-height: 80vh;
+		display: block;
+		height: auto;
+		width: auto;
+	}
+
+	.lightbox-close {
+		position: absolute;
+		top: 0.5rem;
+		right: 0.5rem;
+		border: none;
+		background: var(--color-fg);
+		color: var(--color-surface);
+		border-radius: 999px;
+		width: 32px;
+		height: 32px;
+		display: grid;
+		place-items: center;
+		cursor: pointer;
+		font-size: 1.2rem;
+		line-height: 1;
 	}
 
 	.rich-text-block.in-project-page :global(h2),
@@ -251,6 +354,7 @@
 
 		.project-page-meta {
 			grid-template-columns: auto auto;
+			margin-top: 0;
 		}
 
 		.project-image-wrap {
@@ -261,15 +365,15 @@
 
 		.project-detail {
 			grid-template-columns: 1fr;
-			padding-top: 5vh;
-			padding-bottom: 5vh;
+			padding-top: 4vh;
+			padding-bottom: 6vh;
 		}
 
 		.rich-text-block.in-project-page {
 			margin-left: 7vw;
 			margin-right: 7vw;
-			padding-left: 10vw;
-			padding-right: 10vw;
+			padding-left: 7vw;
+			padding-right: 7vw;
 		}
 
 		.project-gallery {
@@ -295,8 +399,8 @@
 		}
 
 		.project-page-meta {
-			margin-left: 20vw;
-			margin-bottom: 2vh;
+			margin-left: 7vw;
+			margin-bottom: 1vh;
 			font-size: 1em;
 		}
 
