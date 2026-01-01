@@ -8,6 +8,32 @@
 		padding-inline: var(--section-padding-x);
 	}
 
+	.container {
+		width: min(100%, var(--container-max-width));
+		margin-inline: auto;
+	}
+
+	.grid-12 {
+		display: grid;
+		grid-template-columns: repeat(12, minmax(0, 1fr));
+		gap: var(--grid-gap);
+	}
+
+	.stack {
+		display: grid;
+		gap: var(--stack-gap);
+	}
+
+	.stack-sm {
+		display: grid;
+		gap: var(--stack-gap-sm);
+	}
+
+	.stack-lg {
+		display: grid;
+		gap: var(--stack-gap-lg);
+	}
+
 	.jf-card {
 		background-color: var(--color-surface);
 		border-radius: var(--card-radius);
@@ -27,6 +53,12 @@
 		line-height: 0.9;
 		letter-spacing: var(--tracking-tight-xl);
 		text-transform: lowercase;
+	}
+
+	.type-lead {
+		font-size: clamp(1.05rem, 1.6vw, 1.35rem);
+		line-height: 1.7;
+		letter-spacing: var(--tracking-tight-sm);
 	}
 }
 

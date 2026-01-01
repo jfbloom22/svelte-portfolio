@@ -118,188 +118,208 @@ Partnering with my cofounder Neil Morelli, PhD (industrial-organizational psycho
 	<HeroSection primaryName="Jonathan" secondaryName="Flower" lines={heroLines} />
 
 	<section class="jf-section bio-section">
-		<div class="bio-history">
-			{#each bioHistory.split('\n\n') as paragraph (paragraph)}
-				<p class="bio-paragraph">{paragraph}</p>
-			{/each}
-		</div>
+		<div class="container grid-12">
+			<div class="bio-history type-lead col-span-12 lg:col-span-6 lg:col-start-2">
+				{#each bioHistory.split('\n\n') as paragraph (paragraph)}
+					<p class="bio-paragraph">{paragraph}</p>
+				{/each}
+			</div>
 
-		<div class="bio-images">
-			<img class="bio-image" src="/images/IMG_6620.webp" alt="Jonathan Flower portrait" loading="lazy" />
-			<img
-				class="bio-image bio-image--square"
-				src="/images/me-at-the-beach.webp"
-				alt="Jonathan Flower at the beach"
-				loading="lazy"
-			/>
-		</div>
+			<div class="bio-images col-span-12 lg:col-span-4 lg:col-start-8">
+				<img class="bio-image" src="/images/IMG_6620.webp" alt="Jonathan Flower portrait" loading="lazy" />
+				<img
+					class="bio-image bio-image--square"
+					src="/images/me-at-the-beach.webp"
+					alt="Jonathan Flower at the beach"
+					loading="lazy"
+				/>
+			</div>
 
-		<div class="bio-motto jf-card">
-			<h4>«Simple, strategic and impactful.»</h4>
-			<h6>— This is my mantra and method.</h6>
+			<div class="bio-motto jf-card col-span-12 md:col-span-6 md:col-start-2">
+				<h4>«Simple, strategic and impactful.»</h4>
+				<h6>— This is my mantra and method.</h6>
+			</div>
 		</div>
 	</section>
 
 	<section class="jf-section skills-section section-reveal" use:inView>
-		<SectionHeading title="proskills" accent=":" showDot={false} />
-		<div class="skills-grid">
-			{#each skills as skill (skill.number)}
-				<article class="skill-card jf-card">
-					<span class="skill-number">{skill.number}</span>
-					<p>{skill.text}</p>
-				</article>
-			{/each}
+		<div class="container grid-12">
+			<div class="col-span-12 lg:col-span-6 lg:col-start-2">
+				<SectionHeading title="proskills" accent=":" showDot={false} />
+			</div>
+			<div class="skills-grid col-span-12 lg:col-span-10 lg:col-start-2">
+				{#each skills as skill (skill.number)}
+					<article class="skill-card jf-card">
+						<span class="skill-number">{skill.number}</span>
+						<p>{skill.text}</p>
+					</article>
+				{/each}
+			</div>
 		</div>
 	</section>
 
 	<section class="jf-section projects-section section-reveal" use:inView>
-		<SectionHeading title="projects" accent="." showDot={false}>
-			<p class="text-muted">A curated selection of recent work.</p>
-		</SectionHeading>
-		<div class="container-working-with">
-			<h6>working with:</h6>
-			<div class="clients-logos">
-				{#each clients as client (client.name)}
-					<img class="clients-logo-image" src={client.logo} alt={`${client.name} logo`} loading="lazy" />
+		<div class="container grid-12">
+			<div class="col-span-12 lg:col-span-6 lg:col-start-2">
+				<SectionHeading title="projects" accent="." showDot={false}>
+					<p class="text-muted">A curated selection of recent work.</p>
+				</SectionHeading>
+			</div>
+			<div class="container-working-with col-span-12 lg:col-span-5 lg:col-start-8">
+				<h6>working with:</h6>
+				<div class="clients-logos">
+					{#each clients as client (client.name)}
+						<img class="clients-logo-image" src={client.logo} alt={`${client.name} logo`} loading="lazy" />
+					{/each}
+				</div>
+			</div>
+			<div class="projects-list col-span-12 lg:col-span-10 lg:col-start-2">
+				{#each projects as project (project.slug)}
+					<ProjectCard {project} />
 				{/each}
 			</div>
-		</div>
-		<div class="projects-list">
-			{#each projects as project (project.slug)}
-				<ProjectCard {project} />
-			{/each}
 		</div>
 	</section>
 
 	<section class="jf-section testimonial-section section-reveal" use:inView>
-		<h2 class="quote-heading">
-			client says<span class="text-muted">:</span>
-		</h2>
-		<div class="container-quote">
-			<p class="quote-paragraph">«{testimonial.quote}»</p>
-			<div class="quote-author">
-				<img class="testimonial-image" src={testimonial.image.src} alt={testimonial.image.alt} loading="lazy" />
-				<div class="quote-author-name">
-					<h5>{testimonial.author}</h5>
-					<h6>{testimonial.company}</h6>
+		<div class="container grid-12">
+			<div class="col-span-12 lg:col-span-6 lg:col-start-2">
+				<SectionHeading title="client says" accent=":" showDot={false} />
+			</div>
+			<div class="container-quote col-span-12 lg:col-span-7 lg:col-start-3">
+				<p class="quote-paragraph">«{testimonial.quote}»</p>
+				<div class="quote-author">
+					<img class="testimonial-image" src={testimonial.image.src} alt={testimonial.image.alt} loading="lazy" />
+					<div class="quote-author-name">
+						<h5>{testimonial.author}</h5>
+						<h6>{testimonial.company}</h6>
+					</div>
 				</div>
 			</div>
 		</div>
 	</section>
 
 	<section class="jf-section writing-section section-reveal" use:inView>
-		<SectionHeading title="my" accent="insights" showDot={false}>
-			<p class="text-muted">
-				What I learn as I strive for excellence in life, software development, and servant leadership.
-			</p>
-		</SectionHeading>
+		<div class="container grid-12">
+			<div class="col-span-12 lg:col-span-6 lg:col-start-2">
+				<SectionHeading title="my" accent="insights" showDot={false}>
+					<p class="text-muted">
+						What I learn as I strive for excellence in life, software development, and servant leadership.
+					</p>
+				</SectionHeading>
+			</div>
 
-		{#if latestPosts.length}
-			<ul class="writing-list">
-				{#each latestPosts as post (post.url)}
-					<li class="writing-card jf-card">
-						<a
-							href={`https://${post.url.replace(/^https?:\/\//, '')}`}
-							target="_blank"
-							rel="noopener noreferrer"
-						>
-							<div class="writing-card__body">
-								<div class="writing-card__meta">
-									<p class="writing-card__title">{post.title}</p>
-									{#if post.date}
-										<span class="writing-card__date">{post.date}</span>
-									{/if}
-								</div>
-								{#if post.category || post.excerpt}
-									<div class="writing-card__excerpt">
-										{#if post.category}
-											<span class="writing-card__pill">{post.category}</span>
-										{/if}
-										{#if post.excerpt}
-											<p>{post.excerpt}</p>
+			<div class="col-span-12 lg:col-span-10 lg:col-start-2">
+				{#if latestPosts.length}
+					<ul class="writing-list">
+						{#each latestPosts as post (post.url)}
+							<li class="writing-card jf-card">
+								<a
+									href={`https://${post.url.replace(/^https?:\/\//, '')}`}
+									target="_blank"
+									rel="noopener noreferrer"
+								>
+									<div class="writing-card__body">
+										<div class="writing-card__meta">
+											<p class="writing-card__title">{post.title}</p>
+											{#if post.date}
+												<span class="writing-card__date">{post.date}</span>
+											{/if}
+										</div>
+										{#if post.category || post.excerpt}
+											<div class="writing-card__excerpt">
+												{#if post.category}
+													<span class="writing-card__pill">{post.category}</span>
+												{/if}
+												{#if post.excerpt}
+													<p>{post.excerpt}</p>
+												{/if}
+											</div>
 										{/if}
 									</div>
-								{/if}
-							</div>
-							{#if post.thumbnailUrl}
-								<div class="writing-card__thumb">
-									<img src={post.thumbnailUrl} alt={post.thumbnailAlt ?? post.title} loading="lazy" />
-								</div>
-							{/if}
-						</a>
-					</li>
-				{/each}
-			</ul>
-		{:else}
-			<p class="text-muted">No posts found (WordPress fetch failed).</p>
-		{/if}
+									{#if post.thumbnailUrl}
+										<div class="writing-card__thumb">
+											<img src={post.thumbnailUrl} alt={post.thumbnailAlt ?? post.title} loading="lazy" />
+										</div>
+									{/if}
+								</a>
+							</li>
+						{/each}
+					</ul>
+				{:else}
+					<p class="text-muted">No posts found (WordPress fetch failed).</p>
+				{/if}
+			</div>
+		</div>
 	</section>
 
 	<section class="jf-section tools-section section-reveal" use:inView>
-		<div class="tools-container">
-			<div class="tools-item large">
-				<h2 class="tools-heading-copy">
-					<span class="text-muted">tools & services<br /></span>
-					I'm using<span class="text-muted">:</span>
-				</h2>
+		<div class="container grid-12">
+			<div class="col-span-12 lg:col-span-6 lg:col-start-2">
+				<SectionHeading title="tools & services" accent="I'm using" showDot={false} />
 			</div>
-
-			{#each tools as tool, index (tool.name)}
-				<article class={`tools-item ${index % 2 === 1 ? 'small' : ''}`}>
-					<img class="tools-image" src={tool.image.src} alt={tool.image.alt} loading="lazy" />
-					<div class="tools-item-content">
-						<h4>{tool.name}</h4>
-						<p class="tools-item-about">{tool.description}</p>
-					</div>
-				</article>
-			{/each}
-
-			<div class="tools-item tall">
-				<h4>Coding Apps<span class="text-muted">:</span></h4>
-				{#each codingApps as app (app.name)}
-					<div class="tools-item-tall">
-						<img src={app.image.src} alt={app.image.alt} loading="lazy" />
-						<span>{app.name}</span>
-					</div>
+			<div class="tools-container col-span-12 lg:col-span-10 lg:col-start-2">
+				{#each tools as tool, index (tool.name)}
+					<article class={`tools-item ${index % 2 === 1 ? 'small' : ''}`}>
+						<img class="tools-image" src={tool.image.src} alt={tool.image.alt} loading="lazy" />
+						<div class="tools-item-content">
+							<h4>{tool.name}</h4>
+							<p class="tools-item-about">{tool.description}</p>
+						</div>
+					</article>
 				{/each}
+
+				<div class="tools-item tall">
+					<h4>Coding Apps<span class="text-muted">:</span></h4>
+					{#each codingApps as app (app.name)}
+						<div class="tools-item-tall">
+							<img src={app.image.src} alt={app.image.alt} loading="lazy" />
+							<span>{app.name}</span>
+						</div>
+					{/each}
+				</div>
 			</div>
 		</div>
 	</section>
 
 	<section class="jf-section contact-section section-reveal" use:inView>
-		<h2 class="contact-heading">
-			connect<br />with me<span class="text-muted">:</span>
-		</h2>
-		<div class="contact-container">
-			<a
-				class="contact-link"
-				href="https://www.linkedin.com/in/jonathan-flower/"
-				target="_blank"
-				rel="noopener noreferrer"
-			>
-				Connect on LinkedIn
-			</a>
+		<div class="container grid-12">
+			<div class="col-span-12 lg:col-span-6 lg:col-start-2">
+				<SectionHeading title="connect" accent="with me:" showDot={false} />
+			</div>
+			<div class="contact-container col-span-12 lg:col-span-4 lg:col-start-8">
+				<a
+					class="contact-link"
+					href="https://www.linkedin.com/in/jonathan-flower/"
+					target="_blank"
+					rel="noopener noreferrer"
+				>
+					Connect on LinkedIn
+				</a>
+			</div>
 		</div>
 	</section>
 
 	<section class="jf-section follow-section section-reveal" use:inView>
-		<h2 class="follow-me-heading">
-			follow me<span class="text-muted">:</span>
-		</h2>
-		<div class="follow-me-socials">
-			{#each socials as social, index (social.label)}
-				<div class={`follow-me-item ${index === 0 ? 'first' : index === 1 ? 'second' : 'third'}`}>
-					<a
-						class="follow-link"
-						href={`https://${social.url.replace(/^https?:\/\//, '')}`}
-						target="_blank"
-						rel="noopener noreferrer"
-					>
-						{social.label}
-					</a>
-					<div class="follow-counter">{social.count}</div>
-				</div>
-			{/each}
+		<div class="container grid-12">
+			<div class="col-span-12 lg:col-span-6 lg:col-start-2">
+				<SectionHeading title="follow me" accent=":" showDot={false} />
+			</div>
+			<div class="follow-me-socials col-span-12 lg:col-span-9 lg:col-start-2">
+				{#each socials as social (social.label)}
+					<div class="follow-me-item">
+						<a
+							class="follow-link"
+							href={`https://${social.url.replace(/^https?:\/\//, '')}`}
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							{social.label}
+						</a>
+						<div class="follow-counter">{social.count}</div>
+					</div>
+				{/each}
+			</div>
 		</div>
 	</section>
 </main>
@@ -308,9 +328,8 @@ Partnering with my cofounder Neil Morelli, PhD (industrial-organizational psycho
 	.site-shell {
 		position: relative;
 		margin: 0 auto;
-		max-width: var(--site-shell-max-width);
-		padding-inline: var(--site-shell-padding-x);
-		padding-block: var(--site-shell-padding-y);
+		max-width: none;
+		padding: 0;
 	}
 
 	.section-reveal {
@@ -333,17 +352,8 @@ Partnering with my cofounder Neil Morelli, PhD (industrial-organizational psycho
 		}
 	}
 
-	.bio-section {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-		gap: clamp(2rem, 5vw, 5rem);
-	}
-
 	.bio-history {
 		position: relative;
-		font-size: 1.2rem;
-		line-height: 1.7;
-		letter-spacing: var(--tracking-tight-md);
 	}
 
 	.bio-images {
@@ -377,19 +387,15 @@ Partnering with my cofounder Neil Morelli, PhD (industrial-organizational psycho
 
 	.projects-section .projects-list {
 		margin-top: clamp(2rem, 4vh, 4rem);
-		display: flex;
-		flex-direction: column;
-		margin-left: 10%;
-		margin-right: 10%;
+		display: grid;
+		gap: clamp(1.5rem, 3vw, 3rem);
 	}
 
 	.container-working-with {
 		display: grid;
-		grid-template-columns: 20vw auto;
+		grid-template-columns: auto 1fr;
 		align-items: center;
-		margin-bottom: 10vh;
-		margin-left: 20%;
-		margin-right: 5vw;
+		gap: clamp(1rem, 4vw, 3rem);
 	}
 
 	.clients-logos {
@@ -409,11 +415,6 @@ Partnering with my cofounder Neil Morelli, PhD (industrial-organizational psycho
 		opacity: 1;
 	}
 
-
-	.writing-section {
-		display: grid;
-		gap: clamp(1.5rem, 5vw, 5rem);
-	}
 
 	.writing-list {
 		list-style: none;
@@ -495,11 +496,6 @@ Partnering with my cofounder Neil Morelli, PhD (industrial-organizational psycho
 		text-transform: lowercase;
 	}
 
-	.skills-section {
-		display: grid;
-		gap: clamp(1.5rem, 5vw, 5rem);
-	}
-
 	.skills-grid {
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -518,34 +514,25 @@ Partnering with my cofounder Neil Morelli, PhD (industrial-organizational psycho
 		color: var(--color-muted);
 	}
 
-	.quote-heading {
-		margin-left: 20%;
-		line-height: 0.8;
-	}
-
 	.container-quote {
 		background-color: var(--color-surface);
-		margin-left: 20%;
-		margin-right: 20%;
-		padding-top: 15vh;
-		padding-left: 10vw;
-		padding-right: 10vw;
-		padding-bottom: 8vh;
+		border-radius: var(--card-radius);
+		box-shadow: var(--card-shadow);
+		padding: clamp(2.5rem, 8vh, 6rem) clamp(2rem, 6vw, 4rem);
 	}
 
 	.quote-paragraph {
 		letter-spacing: -0.015em;
-		margin-bottom: 10vh;
-		font-size: 1.7em;
+		margin-bottom: clamp(2rem, 6vh, 4rem);
+		font-size: clamp(1.2rem, 2.4vw, 1.7rem);
 		font-weight: var(--font-weight-medium);
 		line-height: 1.35;
 	}
 
 	.quote-author {
 		display: grid;
-		grid-template-columns: 10vw auto;
-		gap: 5vw;
-		margin-left: -5vw;
+		grid-template-columns: 72px 1fr;
+		gap: clamp(1rem, 4vw, 2rem);
 	}
 
 	.quote-author-name {
@@ -555,8 +542,8 @@ Partnering with my cofounder Neil Morelli, PhD (industrial-organizational psycho
 	}
 
 	.testimonial-image {
-		width: min(10vw, 72px);
-		height: min(10vw, 72px);
+		width: clamp(56px, 6vw, 80px);
+		height: clamp(56px, 6vw, 80px);
 		border-radius: var(--radius-pill);
 		object-fit: cover;
 	}
@@ -564,13 +551,12 @@ Partnering with my cofounder Neil Morelli, PhD (industrial-organizational psycho
 	.tools-container {
 		display: grid;
 		grid-template-columns: repeat(3, minmax(0, 1fr));
-		gap: 1.5vw;
-		padding-inline: 2vw;
+		gap: clamp(1rem, 2.5vw, 2rem);
 	}
 
 	.tools-item {
 		background-color: var(--color-surface);
-		padding: 3vw 4vw;
+		padding: clamp(1.5rem, 3vw, 3rem);
 		display: grid;
 		gap: 1vh;
 	}
@@ -578,23 +564,14 @@ Partnering with my cofounder Neil Morelli, PhD (industrial-organizational psycho
 	.tools-item.small {
 		grid-template-columns: 64px 1fr;
 		align-items: center;
-		padding-inline: 2vw;
-	}
-
-	.tools-item.large {
-		display: flex;
-		align-items: center;
+		padding-inline: clamp(1.5rem, 3vw, 2.5rem);
 	}
 
 	.tools-item.tall {
 		align-content: start;
 		align-items: start;
 		gap: 3vh;
-		padding-inline: 3vw;
-	}
-
-	.tools-heading-copy {
-		line-height: 0.9;
+		padding-inline: clamp(1.5rem, 3vw, 2.5rem);
 	}
 
 	.tools-image {
@@ -638,18 +615,9 @@ Partnering with my cofounder Neil Morelli, PhD (industrial-organizational psycho
 		font-weight: var(--font-weight-medium);
 	}
 
-	.contact-heading {
-		margin-left: 20%;
-		font-size: 22vh;
-		font-weight: var(--font-weight-black);
-		line-height: 0.7;
-	}
-
 	.contact-container {
 		display: grid;
-		gap: 3vh;
-		margin-bottom: 20vh;
-		margin-left: 60%;
+		gap: clamp(1rem, 3vh, 2.5rem);
 	}
 
 	.contact-link {
@@ -666,17 +634,9 @@ Partnering with my cofounder Neil Morelli, PhD (industrial-organizational psycho
 		color: var(--color-accent);
 	}
 
-	.follow-me-heading {
-		margin-bottom: 10vh;
-		margin-left: 20%;
-	}
-
 	.follow-me-socials {
 		display: grid;
-		gap: 2vh;
-		margin-bottom: 10vh;
-		margin-left: 30%;
-		margin-right: 20%;
+		gap: clamp(1rem, 3vh, 2rem);
 	}
 
 	.follow-me-item {
@@ -684,20 +644,7 @@ Partnering with my cofounder Neil Morelli, PhD (industrial-organizational psycho
 		display: grid;
 		grid-template-columns: 1.5fr 1fr;
 		place-items: center start;
-		padding: 4% 5%;
-	}
-
-	.follow-me-item.first {
-		margin-right: 10vw;
-	}
-
-	.follow-me-item.second {
-		margin-left: 10vw;
-	}
-
-	.follow-me-item.third {
-		margin-left: 5vw;
-		margin-right: 5vw;
+		padding: clamp(1.25rem, 3vw, 2.5rem);
 	}
 
 	.follow-link {
@@ -720,35 +667,17 @@ Partnering with my cofounder Neil Morelli, PhD (industrial-organizational psycho
 	}
 
 	@media (max-width: 1024px) {
-		.container-working-with {
-			grid-template-columns: 1fr;
-			gap: 2vh;
-			margin-left: 10%;
-			margin-right: 10%;
-		}
-
-		.quote-heading {
-			margin-left: 10%;
-		}
-
 		.container-quote {
-			margin-left: 10%;
-			margin-right: 10%;
-			padding-left: 6vw;
-			padding-right: 6vw;
+			padding-inline: clamp(1.5rem, 6vw, 3rem);
 		}
 
 		.tools-container {
 			grid-template-columns: repeat(2, minmax(0, 1fr));
 		}
 
-		.contact-container {
-			margin-left: 40%;
-		}
-
-		.follow-me-socials {
-			margin-left: 20%;
-			margin-right: 10%;
+		.container-working-with {
+			grid-template-columns: 1fr;
+			gap: 1.5rem;
 		}
 	}
 
@@ -758,31 +687,12 @@ Partnering with my cofounder Neil Morelli, PhD (industrial-organizational psycho
 			gap: 1.5rem;
 		}
 
-		.quote-heading {
-			margin-left: 0;
-			font-size: clamp(2.5rem, 10vw, 5rem);
-			line-height: 0.9;
-		}
-
 		.container-quote {
-			margin-left: 0;
-			margin-right: 0;
-			padding: 10vh 6vw 8vh;
+			padding: clamp(2rem, 8vh, 4rem) clamp(1.5rem, 6vw, 3rem);
 		}
 
 		.quote-author {
-			grid-template-columns: 72px 1fr;
-			margin-left: 0;
 			gap: 1.5rem;
-		}
-
-		.contact-heading {
-			margin-left: 0;
-			font-size: clamp(3rem, 16vw, 7rem);
-		}
-
-		.contact-container {
-			margin-left: 0;
 		}
 
 		.tools-container {
@@ -812,15 +722,6 @@ Partnering with my cofounder Neil Morelli, PhD (industrial-organizational psycho
 		.tools-item.small .tools-image {
 			width: 56px;
 			height: 56px;
-		}
-
-		.follow-me-heading {
-			margin-left: 0;
-		}
-
-		.follow-me-socials {
-			margin-left: 0;
-			margin-right: 0;
 		}
 
 		.follow-me-item {

@@ -44,9 +44,14 @@
 	/* Spacing + surfaces */
 	--section-padding-y: clamp(5rem, 15vh, 12rem); /* section padding */
 	--section-padding-x: clamp(1rem, 10vw, 10rem); /* section padding */
-	--site-shell-max-width: 1200px;
+	--container-max-width: 80rem;
+	--site-shell-max-width: var(--container-max-width);
 	--site-shell-padding-x: clamp(1.5rem, 4vw, 4rem);
 	--site-shell-padding-y: clamp(2rem, 4vw, 4rem);
+	--grid-gap: clamp(1.25rem, 3vw, 3rem);
+	--stack-gap: clamp(1rem, 2.5vw, 2.5rem);
+	--stack-gap-lg: clamp(2rem, 4vw, 4rem);
+	--stack-gap-sm: clamp(0.75rem, 1.5vw, 1.5rem);
 	--card-radius: 32px;
 	--radius-pill: 999px;
 	--card-shadow: 0 10px 30px -10px rgb(0 0 0 / 0.16);
@@ -146,7 +151,7 @@ p {
 }
 
 section {
-	padding: var(--section-padding-y) var(--section-padding-x);
+	padding: 0;
 }
 
 .sr-only {
