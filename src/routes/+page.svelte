@@ -71,14 +71,14 @@ Partnering with my cofounder Neil Morelli, PhD (industrial-organizational psycho
 			image: { src: '/images/u4fPSX9Q_400x400-1381493564.webp', alt: 'Bear' }
 		},
 		{
-			name: 'Unibox',
-			description: 'Once you group emails by sender, there is no going back.',
-			image: { src: '/images/Unibox.webp', alt: 'Unibox' }
+			name: 'Spark Mail',
+			description: 'Great UI and support for grouping emails by sender.',
+			image: { src: '/images/spark.svg', alt: 'Spark Mail logo' }
 		},
 		{
-			name: 'Visual Studio Code',
-			description: 'VS Code has become a powerful IDE and it is fast. Who could ask for more?',
-			image: { src: '/images/Visual-Studio-Code-Logo-1.png', alt: 'Visual Studio Code logo' }
+			name: 'Cursor',
+			description: 'My daily driver for AI-assisted coding. Fast iteration, great ergonomics, and solid defaults.',
+			image: { src: '/images/cursor.svg', alt: 'Cursor logo' }
 		},
 		{
 			name: 'Pixelmator Pro',
@@ -86,18 +86,14 @@ Partnering with my cofounder Neil Morelli, PhD (industrial-organizational psycho
 			image: { src: '/images/ico_pixelamtor-pro-2.02x.webp', alt: 'Pixelmator Pro logo' }
 		},
 		{
-			name: 'PrivateLLM',
-			description: 'ChatGPT but private and works offline.',
-			image: { src: '/images/privatellm.webp', alt: 'PrivateLLM logo' }
+			name: 'Open WebUI',
+			description: 'ChatGPT Teams, but self-hosted with all the frontier models plus local & private models.',
+			image: { src: '/images/open-webui.webp', alt: 'Open WebUI logo' }
 		}
 	];
 
 	const codingApps = [
-		{ name: 'Visual Studio Code', image: { src: '/images/Visual-Studio-Code-Logo-1.png', alt: 'VS Code logo' } },
-		{
-			name: 'Github Copilot',
-			image: { src: '/images/Microsoft.VisualStudio.Services.Icons-2076853151.webp', alt: 'Github Copilot logo' }
-		},
+		{ name: 'Cursor', image: { src: '/images/cursor.svg', alt: 'Cursor logo' } },
 		{ name: 'Warp', image: { src: '/images/warp.svg', alt: 'Warp logo' } },
 		{ name: 'DevUtils', image: { src: '/images/1200x630bb-526247306.webp', alt: 'DevUtils logo' } }
 	];
@@ -602,12 +598,16 @@ Partnering with my cofounder Neil Morelli, PhD (industrial-organizational psycho
 	}
 
 	.tools-image {
-		max-width: 128px;
+		width: 128px;
+		height: 128px;
 		margin-bottom: 2vh;
+		object-fit: contain;
+		display: block;
 	}
 
 	.tools-item.small .tools-image {
-		max-width: 64px;
+		width: 64px;
+		height: 64px;
 		margin-bottom: 0;
 	}
 
@@ -802,6 +802,16 @@ Partnering with my cofounder Neil Morelli, PhD (industrial-organizational psycho
 
 		.tools-item.tall {
 			padding-inline: 1.5rem;
+		}
+
+		.tools-image {
+			width: 96px;
+			height: 96px;
+		}
+
+		.tools-item.small .tools-image {
+			width: 56px;
+			height: 56px;
 		}
 
 		.follow-me-heading {
