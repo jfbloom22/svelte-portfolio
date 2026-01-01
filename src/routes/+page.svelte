@@ -1,9 +1,9 @@
 <script lang="ts">
+	import { inView } from '$lib/actions/in-view';
 	import BackgroundScene from '$lib/components/BackgroundScene.svelte';
 	import HeroSection, { type HeroLine } from '$lib/components/HeroSection.svelte';
-	import SectionHeading from '$lib/components/SectionHeading.svelte';
 	import ProjectCard from '$lib/components/ProjectCard.svelte';
-	import { inView } from '$lib/actions/in-view';
+	import SectionHeading from '$lib/components/SectionHeading.svelte';
 
 	let { data } = $props();
 
@@ -31,27 +31,27 @@
 	);
 
 	const heroLines: HeroLine[] = [
-		{ text: 'software architect.', align: 'right', delay: 0.1 },
-		{ text: 'servant leader.', align: 'left', delay: 0.25 },
-		{ text: 'developer.', align: 'right', delay: 0.4 },
-		{ text: 'ai prompt specialist.', align: 'left', delay: 0.55 },
+		{ text: 'ai adoption strategist.', align: 'right', delay: 0.1 },
+		{ text: 'software architect.', align: 'left', delay: 0.25 },
+		{ text: 'servant leader.', align: 'right', delay: 0.4 },
+		{ text: 'ai engineer.', align: 'left', delay: 0.55 },
 		{ text: 'verifiably human.', align: 'right', delay: 0.7 }
 	];
 
-	const bioHistory = `Born in Texas. Currently in Atlanta, GA. I deliver extraordinary value through servant leadership,
-Agile Scrum Methodologies, full stack coding, and Generative AI.
+	const bioHistory = `AI Adoption Strategist. Born in Texas. Currently in Atlanta, GA. I deliver extraordinary value through servant leadership,
+Agile Scrum Methodologies, full stack engineering, and Generative AI.
 
-How did I get here? Produced short films with visionary directors and talented videographers. Helped law firms go paperless with virtualized cloud hosting infrastructure. Crafted and deployed dozens of enterprise software solutions that make work enjoyable and efficient.
+How did I get here? Produced short films with visionary directors and talented videographers. Helped law firms go paperless with virtualized cloud hosting infrastructure. Crafted and deployed enterprise software solutions that make work enjoyable and efficient.  Architected AI solutions where I orchestrated human enginuity, conventional software engineering, and multipole AI agents together to deliver value.
 
-Currently working on leveling up my ability to contribute better and faster with Generative AI tools.
+Here's the thing... the technology usually isn't the hard part. The psychology is. I've built solutions I was proud of — and still watched them stall in adoption.
 
-I am excited about revolutionizing customer experiences by harnessing the unprecedented capabilities of blockchain and artificial intelligence.`;
+Partnering with my cofounder Neil Morelli, PhD (industrial-organizational psychology), changed how I think about rollout. At Workplace Labs, we combine AI engineering and organizational behavior to show people how easy it is to leverage AI and drive effective adoption. If you're tasked with making AI actually stick across your org, let's talk.`;
 
 	const skills = [
-		{ number: '1.', text: 'Passionate about creating exceptional user experiences.' },
-		{ number: '2.', text: 'Over a decade of leading and inspiring creative teams.' },
-		{ number: '3.', text: 'Coaching and guiding teams to leverage Generative AI safely and securely.' },
-		{ number: '4.', text: 'Streamlining processes and facilitating collaboration through Agile Scrum Methodologies.' }
+		{ number: '1.', text: 'Designing and shipping thoughtful software that makes work easier.' },
+		{ number: '2.', text: 'Leading teams with calm clarity (and a bias for what actually works).' },
+		{ number: '3.', text: 'Running hands-on AI adoption workshops that build real capability — not hype.' },
+		{ number: '4.', text: 'Helping orgs spot real AI leverage, set guardrails, and drive usage that sticks.' }
 	];
 
 	const testimonial = {
@@ -272,10 +272,17 @@ I am excited about revolutionizing customer experiences by harnessing the unprec
 
 	<section class="jf-section contact-section section-reveal" use:inView>
 		<h2 class="contact-heading">
-			contact<br />me<span class="text-muted">:</span>
+			connect<br />with me<span class="text-muted">:</span>
 		</h2>
 		<div class="contact-container">
-			<a class="contact-link" href="mailto:me@jonathanflower.com">me@jonathanflower.com</a>
+			<a
+				class="contact-link"
+				href="https://www.linkedin.com/in/jonathan-flower/"
+				target="_blank"
+				rel="noopener noreferrer"
+			>
+				Connect on LinkedIn
+			</a>
 		</div>
 	</section>
 

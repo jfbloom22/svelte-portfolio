@@ -8,25 +8,25 @@
 </script>
 
 <svelte:head>
-	<title>Jonathan Flower — Software Architect</title>
+	<title>Jonathan Flower — AI Adoption Strategist</title>
 	<meta
 		name="description"
-		content="Jonathan Flower is a software architect and servant leader delivering extraordinary value through thoughtful product design, engineering, and generative AI."
+		content="AI Adoption Strategist and software architect bridging AI engineering and organizational psychology. Cofounder at Workplace Labs."
 	/>
 	<meta property="og:site_name" content="Jonathan Flower" />
 	<meta property="og:type" content="website" />
-	<meta property="og:title" content="Jonathan Flower — Software Architect" />
+	<meta property="og:title" content="Jonathan Flower — AI Adoption Strategist" />
 	<meta
 		property="og:description"
-		content="Software architect and servant leader delivering extraordinary value through thoughtful product design, engineering, and generative AI."
+		content="AI Adoption Strategist and software architect bridging AI engineering and organizational psychology. Cofounder at Workplace Labs."
 	/>
 	<meta property="og:url" content={`${siteUrl}/`} />
 	<meta property="og:image" content={ogImage} />
 	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:title" content="Jonathan Flower — Software Architect" />
+	<meta name="twitter:title" content="Jonathan Flower — AI Adoption Strategist" />
 	<meta
 		name="twitter:description"
-		content="Software architect and servant leader delivering extraordinary value through thoughtful product design, engineering, and generative AI."
+		content="AI Adoption Strategist and software architect bridging AI engineering and organizational psychology. Cofounder at Workplace Labs."
 	/>
 	<meta name="twitter:image" content={ogImage} />
 	<meta name="twitter:domain" content="www.jonathanflower.com" />
