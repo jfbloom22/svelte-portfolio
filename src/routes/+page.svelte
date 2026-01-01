@@ -54,16 +54,6 @@ Partnering with my cofounder Neil Morelli, PhD (industrial-organizational psycho
 		{ number: '4.', text: 'Helping orgs spot real AI leverage, set guardrails, and drive usage that sticks.' }
 	];
 
-	const testimonial = {
-		quote: 'The most important – fast understanding of the business needs and translating into code — not many companies can do it.',
-		author: 'Alexander Losev',
-		company: 'BeaconMadaes',
-		image: {
-			src: '/images/62900db5070f782a68ab352c_Alexander-Losev.webp',
-			alt: 'Alexander Losev headshot'
-		}
-	};
-
 	const tools = [
 		{
 			name: 'Bear',
@@ -117,7 +107,7 @@ Partnering with my cofounder Neil Morelli, PhD (industrial-organizational psycho
 <main class="site-shell">
 	<HeroSection primaryName="Jonathan" secondaryName="Flower" lines={heroLines} />
 
-	<section class="jf-section bio-section">
+	<section class="jf-section jf-section--tall bio-section">
 		<div class="container grid-12">
 			<div class="bio-history type-lead col-span-12 lg:col-span-6 lg:col-start-2">
 				{#each bioHistory.split('\n\n') as paragraph (paragraph)}
@@ -142,7 +132,7 @@ Partnering with my cofounder Neil Morelli, PhD (industrial-organizational psycho
 		</div>
 	</section>
 
-	<section class="jf-section skills-section section-reveal" use:inView>
+	<section class="jf-section jf-section--tall jf-section--full skills-section section-reveal" use:inView>
 		<div class="container grid-12">
 			<div class="col-span-12 lg:col-span-6 lg:col-start-2">
 				<SectionHeading title="proskills" accent=":" showDot={false} />
@@ -158,7 +148,7 @@ Partnering with my cofounder Neil Morelli, PhD (industrial-organizational psycho
 		</div>
 	</section>
 
-	<section class="jf-section projects-section section-reveal" use:inView>
+	<section class="jf-section jf-section--tall jf-section--full projects-section section-reveal" use:inView>
 		<div class="container grid-12">
 			<div class="col-span-12 lg:col-span-6 lg:col-start-2">
 				<SectionHeading title="projects" accent="." showDot={false}>
@@ -181,25 +171,7 @@ Partnering with my cofounder Neil Morelli, PhD (industrial-organizational psycho
 		</div>
 	</section>
 
-	<section class="jf-section testimonial-section section-reveal" use:inView>
-		<div class="container grid-12">
-			<div class="col-span-12 lg:col-span-6 lg:col-start-2">
-				<SectionHeading title="client says" accent=":" showDot={false} />
-			</div>
-			<div class="container-quote col-span-12 lg:col-span-7 lg:col-start-3">
-				<p class="quote-paragraph">«{testimonial.quote}»</p>
-				<div class="quote-author">
-					<img class="testimonial-image" src={testimonial.image.src} alt={testimonial.image.alt} loading="lazy" />
-					<div class="quote-author-name">
-						<h5>{testimonial.author}</h5>
-						<h6>{testimonial.company}</h6>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<section class="jf-section writing-section section-reveal" use:inView>
+	<section class="jf-section jf-section--tall jf-section--full writing-section section-reveal" use:inView>
 		<div class="container grid-12">
 			<div class="col-span-12 lg:col-span-6 lg:col-start-2">
 				<SectionHeading title="my" accent="insights" showDot={false}>
@@ -253,7 +225,7 @@ Partnering with my cofounder Neil Morelli, PhD (industrial-organizational psycho
 		</div>
 	</section>
 
-	<section class="jf-section tools-section section-reveal" use:inView>
+	<section class="jf-section jf-section--tall jf-section--full tools-section section-reveal" use:inView>
 		<div class="container grid-12">
 			<div class="col-span-12 lg:col-span-6 lg:col-start-2">
 				<SectionHeading title="tools & services" accent="I'm using" showDot={false} />
@@ -282,7 +254,7 @@ Partnering with my cofounder Neil Morelli, PhD (industrial-organizational psycho
 		</div>
 	</section>
 
-	<section class="jf-section contact-section section-reveal" use:inView>
+	<section class="jf-section jf-section--tall contact-section section-reveal" use:inView>
 		<div class="container grid-12">
 			<div class="col-span-12 lg:col-span-6 lg:col-start-2">
 				<SectionHeading title="connect" accent="with me:" showDot={false} />
@@ -300,7 +272,7 @@ Partnering with my cofounder Neil Morelli, PhD (industrial-organizational psycho
 		</div>
 	</section>
 
-	<section class="jf-section follow-section section-reveal" use:inView>
+	<section class="jf-section jf-section--tall jf-section--full follow-section section-reveal" use:inView>
 		<div class="container grid-12">
 			<div class="col-span-12 lg:col-span-6 lg:col-start-2">
 				<SectionHeading title="follow me" accent=":" showDot={false} />
@@ -514,44 +486,14 @@ Partnering with my cofounder Neil Morelli, PhD (industrial-organizational psycho
 		color: var(--color-muted);
 	}
 
-	.container-quote {
-		background-color: var(--color-surface);
-		border-radius: var(--card-radius);
-		box-shadow: var(--card-shadow);
-		padding: clamp(2.5rem, 8vh, 6rem) clamp(2rem, 6vw, 4rem);
-	}
-
-	.quote-paragraph {
-		letter-spacing: -0.015em;
-		margin-bottom: clamp(2rem, 6vh, 4rem);
-		font-size: clamp(1.2rem, 2.4vw, 1.7rem);
-		font-weight: var(--font-weight-medium);
-		line-height: 1.35;
-	}
-
-	.quote-author {
-		display: grid;
-		grid-template-columns: 72px 1fr;
-		gap: clamp(1rem, 4vw, 2rem);
-	}
-
-	.quote-author-name {
-		display: grid;
-		gap: 5px;
-		align-content: center;
-	}
-
-	.testimonial-image {
-		width: clamp(56px, 6vw, 80px);
-		height: clamp(56px, 6vw, 80px);
-		border-radius: var(--radius-pill);
-		object-fit: cover;
-	}
-
 	.tools-container {
 		display: grid;
 		grid-template-columns: repeat(3, minmax(0, 1fr));
 		gap: clamp(1rem, 2.5vw, 2rem);
+	}
+
+	.tools-section {
+		padding-block: clamp(8rem, 25vh, 16rem);
 	}
 
 	.tools-item {

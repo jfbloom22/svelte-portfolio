@@ -61,17 +61,25 @@ function truncate(text: string, max = 160) {
 	return text.slice(0, max).replace(/\s+\S*$/, '').trim() + '…';
 }
 
-export async function getLatestWordpressPosts(options?: { base?: string; limit?: number; timeoutMs?: number }): Promise<ExternalPostListItem[]> {
+type WordpressFetch = typeof fetch;
+
+export async function getLatestWordpressPosts(options?: {
+	base?: string;
+	limit?: number;
+	timeoutMs?: number;
+	fetch?: WordpressFetch;
+}): Promise<ExternalPostListItem[]> {
 	const base = options?.base ?? 'https://blog.jonathanflower.com';
 	const limit = options?.limit ?? 5;
 	const timeoutMs = options?.timeoutMs ?? 5000;
+	const fetcher = options?.fetch ?? fetch;
 
 	const url = new URL('/wp-json/wp/v2/posts', base);
 	url.searchParams.set('per_page', String(limit));
 	url.searchParams.set('_fields', 'link,title,excerpt,date,featured_media,_embedded');
 	url.searchParams.set('_embed', 'wp:featuredmedia,wp:term');
 
-	const response = await fetch(url, {
+	const response = await fetcher(url, {
 		headers: { Accept: 'application/json' },
 		signal: AbortSignal.timeout(timeoutMs)
 	});
@@ -117,7 +125,7 @@ export async function getLatestWordpressPosts(options?: { base?: string; limit?:
 		mediaUrl.searchParams.set('per_page', String(mediaIds.size));
 		mediaUrl.searchParams.set('_fields', 'id,source_url,alt_text');
 
-		const mediaResponse = await fetch(mediaUrl, {
+		const mediaResponse = await fetcher(mediaUrl, {
 			headers: { Accept: 'application/json' },
 			signal: AbortSignal.timeout(timeoutMs)
 		});

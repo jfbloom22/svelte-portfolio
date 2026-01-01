@@ -8,6 +8,16 @@
 		padding-inline: var(--section-padding-x);
 	}
 
+	.jf-section--tall {
+		padding-block: clamp(6rem, 20vh, 14rem);
+	}
+
+	.jf-section--full {
+		min-height: 100vh;
+		display: flex;
+		align-items: center;
+	}
+
 	.container {
 		width: min(100%, var(--container-max-width));
 		margin-inline: auto;

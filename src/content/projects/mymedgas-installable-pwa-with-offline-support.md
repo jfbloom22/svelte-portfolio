@@ -1,6 +1,6 @@
 ---
 title: MyMedGas
-summary: Leveraged PWA, service workers, and IndexDB to create an installable web app with offline functionality. This enabled a mobile workforce to service critical medical gas equipment in locations without internet access. Tech Stack: React, Redux, .Net Core, MS SQL.
+summary: "Leveraged PWA, service workers, and IndexDB to create an installable web app with offline functionality. This enabled a mobile workforce to service critical medical gas equipment in locations without internet access. Tech Stack: React, Redux, .Net Core, MS SQL."
 year: 2022
 tags:
   - Custom Software
@@ -9,6 +9,7 @@ gallery:
   - /images/projects/mymedgas-installable-pwa-with-offline-support/gallery-01.jpg
   - /images/projects/mymedgas-installable-pwa-with-offline-support/gallery-02.jpg
   - /images/projects/mymedgas-installable-pwa-with-offline-support/gallery-03.jpg
+  - /images/projects/mymedgas-installable-pwa-with-offline-support/hero.jpg
 ---
 
 ## The Problem
