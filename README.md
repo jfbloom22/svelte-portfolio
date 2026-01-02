@@ -1,45 +1,50 @@
-# sv
+# Jonathan Flower — Portfolio (SvelteKit)
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+This repo hosts my portfolio site, rebuilt from a Webflow original into a fast, static SvelteKit site.
 
-## Creating a project
+Live site: https://www.jonathanflower.com
 
-If you're seeing this, you've probably already done this step. Congrats!
+## Why this exists
+
+I migrated the site from Webflow to SvelteKit to get:
+
+- static delivery with minimal client JS
+- lower cost of hosting
+- higher performance
+
+## Features
+
+- Author content in Markdown with custom Svelte components via mdsvex
+- Pull latest WordPress posts at build time
+- Automatic deployment via GitHub Actions to my shared hosting server via FTP
+
+## Tech & architecture (medium detail)
+
+- SvelteKit + Svelte 5
+- Static site generation via `@sveltejs/adapter-static`
+- Content in repo (projects as mdsvex/Markdown with custom components)
+
+
+## Process note (Svelte MCP)
+
+During the migration I used the Svelte MCP server to quickly reference Svelte 5 and SvelteKit documentation.  The Auto Fixer tool was also very helpful.  learn more: https://svelte.dev/docs/mcp/overview
+
+## Local development
 
 ```sh
-# create a new project in the current directory
-npx sv create
-
-# create a new project in my-app
-npx sv create my-app
+pnpm install
+pnpm dev
 ```
 
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+## Build
 
 ```sh
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+pnpm build
 ```
-
-## Building
-
-To create a production version of your app:
-
-```sh
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
 
 ## Project docs
 
-This repo includes additional context under `docs/`:
+More detail lives in `docs/`:
 
 - `docs/overview.md` — project goals, commands, env vars
 - `docs/PHASED-PLAN.md` — roadmap
